@@ -22,12 +22,11 @@
             min-height: 100vh;
             padding: 20px;
         }
-        /* Título */
         h1 { color: #25D366; margin-bottom: 20px; }
 
         /* Seção de Avisos */
         .avisos {
-            background-color: #444; /* Cinza */
+            background-color: #444;
             color: #fff;
             padding: 10px;
             border-radius: 5px;
@@ -36,45 +35,55 @@
             width: 100%;
         }
 
-        /* Vídeo */
-        .video-embed {
-            width: 100%;
-            max-width: 560px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
         /* Login e Vídeos */
         .login-section, .video-section { display: none; max-width: 350px; width: 100%; text-align: center; }
         .login-section.active, .video-section.active { display: block; }
-        .login-section, .video-section, .contact-section { background: #333; padding: 20px; border-radius: 8px; }
+        .login-section, .video-section { background: #333; padding: 20px; border-radius: 8px; }
+        iframe {
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .responsive-iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Proporção 16:9 */
+        }
         input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
         button { width: 100%; padding: 10px; border-radius: 5px; border: none; cursor: pointer; }
         .login-button { background-color: #25D366; color: white; font-size: 16px; }
         .logout-button { background-color: #FF4B4B; color: white; font-size: 16px; margin-top: 15px; }
-        /* Rodapé */
-        footer { color: #ccc; font-size: 12px; margin-top: 20px; text-align: center; }
 
-        /* Vídeos */
-        .video-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
+        /* Área de Vídeos */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .video-wrapper {
+            width: 100%;
+            max-width: 560px;
+            aspect-ratio: 16 / 9;
+            background-color: #000;
+            overflow: hidden;
+            border-radius: 8px;
+        }
         .video-container button {
+            width: 100%;
+            max-width: 100px;
+            padding: 10px;
             background-color: #25D366;
             color: white;
             border: none;
             border-radius: 5px;
-            padding: 10px;
             font-size: 14px;
             cursor: pointer;
-            width: 100%;
-            max-width: 100px;
         }
         .video-container button.watched { background-color: #800080; }
 
-        /* Ícones Sociais */
-        .social-icons { margin-top: 20px; display: flex; gap: 15px; justify-content: center; }
-        .social-icons a { color: #25D366; font-size: 24px; text-decoration: none; }
+        /* Rodapé */
+        footer { color: #ccc; font-size: 12px; margin-top: 20px; text-align: center; }
     </style>
 </head>
 <body>
@@ -86,12 +95,13 @@
         <p>Terceira Turma - Entre em contato pelo WhatsApp - Início das aulas dia, 17/02/25.</p>
     </div>
 
-    <!-- Vídeo do YouTube -->
-    <iframe class="video-embed" src="https://www.youtube.com/embed/UVfERjaTphk?si=fBNbMPboWamI_yJN" allowfullscreen></iframe>
-
     <!-- Seção de Login -->
     <div class="login-section active" id="loginSection">
         <h2>Login</h2>
+        <iframe class="responsive-iframe" 
+                src="https://www.youtube.com/embed/-46katYC2E0?rel=0" 
+                allowfullscreen>
+        </iframe>
         <input type="text" id="username" placeholder="ID" required>
         <input type="password" id="password" placeholder="Senha" required>
         <button class="login-button" onclick="login()">Entrar</button>
@@ -100,12 +110,10 @@
     <!-- Área de Vídeos -->
     <section class="video-section" id="videoSection">
         <h2>Vídeos Disponíveis</h2>
-        <div id="studentID"></div>
         <div class="video-container" id="videoContainer"></div>
         <button class="logout-button" onclick="logout()">Sair</button>
     </section>
 
-    <!-- Rodapé com ícones de redes sociais -->
     <footer>
         <div class="social-icons">
             <a href="https://instagram.com/iadesigner" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -115,10 +123,12 @@
     </footer>
 
     <script>
-        // Lista de links dos vídeos
-        const videoLinks = Array.from({ length: 30 }, (_, i) => `https://example.com/video${i + 1}`);
+        const videoLinks = [
+            "https://www.youtube.com/embed/-46katYC2E0?rel=0", // Exemplo de vídeo
+            "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+            "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+        ];
 
-        // Função de login
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
@@ -132,31 +142,24 @@
             }
         }
 
-        // Função de logout
         function logout() {
             document.getElementById('videoSection').classList.remove("active");
             document.getElementById('loginSection').classList.add("active");
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
         }
 
-        // Função para carregar os botões dos vídeos
         function loadVideoButtons() {
             const container = document.getElementById('videoContainer');
-            container.innerHTML = ''; // Limpa os botões anteriores para evitar duplicação
-
+            container.innerHTML = '';
             videoLinks.forEach((link, index) => {
-                const button = document.createElement('button');
-                button.textContent = `Vídeo ${index + 1}`;
-                button.onclick = () => playMedia(link, button);
-                container.appendChild(button);
+                const wrapper = document.createElement('div');
+                wrapper.className = 'video-wrapper';
+                const iframe = document.createElement('iframe');
+                iframe.src = link;
+                iframe.allowFullscreen = true;
+                iframe.className = 'responsive-iframe';
+                if (link) wrapper.appendChild(iframe);
+                container.appendChild(wrapper);
             });
-        }
-
-        // Função para abrir o vídeo e marcar como assistido
-        function playMedia(videoLink, button) {
-            window.open(videoLink, '_blank');
-            button.classList.add('watched');
         }
     </script>
 </body>
