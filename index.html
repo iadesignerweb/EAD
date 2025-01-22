@@ -89,6 +89,16 @@
 <body>
     <h1>IADESIGNER • EAD</h1>
 
+    <!-- Anúncio Abaixo do Título -->
+    <ins class="adsbygoogle"
+         style="display:block; margin-bottom: 20px;"
+         data-ad-client="ca-pub-6986092934254305"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
     <!-- Seção de Avisos -->
     <div class="avisos">
         <h2>AVISOS!</h2>
@@ -124,9 +134,7 @@
 
     <script>
         const videoLinks = [
-            "https://www.youtube.com/embed/-46katYC2E0?rel=0", // Exemplo de vídeo
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+            "https://www.youtube.com/embed/-46katYC2E0?rel=0",
         ];
 
         function login() {
@@ -158,6 +166,17 @@
                 iframe.allowFullscreen = true;
                 iframe.className = 'responsive-iframe';
                 if (link) wrapper.appendChild(iframe);
+
+                // Anúncio entre vídeos
+                const ad = document.createElement('ins');
+                ad.className = 'adsbygoogle';
+                ad.style.display = 'block';
+                ad.setAttribute('data-ad-client', 'ca-pub-6986092934254305');
+                ad.setAttribute('data-ad-slot', '1234567890');
+                ad.setAttribute('data-ad-format', 'auto');
+                wrapper.appendChild(ad);
+                (adsbygoogle = window.adsbygoogle || []).push({});
+
                 container.appendChild(wrapper);
             });
         }
