@@ -86,23 +86,6 @@
         /* Rodapé */
         footer { color: #ccc; font-size: 12px; margin-top: 20px; text-align: center; }
 
-        /* Imagem de Campanha */
-        .campanha {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .campanha img {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        .campanha h2 {
-            color: #25D366;
-            margin: 10px 0;
-            font-size: 20px;
-        }
-
         /* Popup */
         .popup {
             display: none;
@@ -123,23 +106,20 @@
             text-align: center;
             max-width: 400px;
             width: 90%;
+            position: relative;
         }
-        .popup-content h2 {
-            margin-bottom: 10px;
-            color: #333;
+        .popup-content img {
+            width: 100%;
+            border-radius: 10px;
         }
-        .popup-content a {
-            color: #25D366;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .popup-content button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #25D366;
-            color: #fff;
+        .popup-content .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
             border: none;
-            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
         }
     </style>
@@ -172,19 +152,11 @@
         <button class="logout-button" onclick="logout()">Sair</button>
     </section>
 
-    <!-- Campanha de Arrecadação -->
-    <div class="campanha">
-        <img src="https://via.placeholder.com/500x300" alt="Imagem da campanha de arrecadação" onclick="openPopup()">
-        <h2>Ajude a Manter Nosso Projeto. Doe qualquer valor.</h2>
-    </div>
-
-    <!-- Popup de Doação -->
+    <!-- Popup de Imagem -->
     <div class="popup" id="popup">
         <div class="popup-content">
-            <h2>Contribua com Nosso Projeto</h2>
-            <p>Para doar, clique no link abaixo:</p>
-            <a href="https://nubank.com.br/cobrar/shr6q/679065c7-29fc-4dbd-b5e8-61745c368a95" target="_blank">Doar via Pix</a>
-            <button onclick="closePopup()">Fechar</button>
+            <button class="close-btn" onclick="closePopup()">X</button>
+            <img src="https://via.placeholder.com/500x300" alt="Imagem da campanha">
         </div>
     </div>
 
@@ -243,6 +215,9 @@
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
         }
+
+        // Exibir popup automaticamente após 15 segundos
+        setTimeout(openPopup, 15000);
     </script>
 </body>
 </html>
