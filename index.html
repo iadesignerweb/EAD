@@ -120,7 +120,24 @@
     <!-- Área de Vídeos -->
     <section class="video-section" id="videoSection">
         <h2>Vídeos Disponíveis</h2>
-        <div class="video-container" id="videoContainer"></div>
+        <div class="video-container" id="videoContainer">
+            <!-- Vídeos já configurados -->
+            <div class="video-wrapper">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/-46katYC2E0?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe class="responsive-iframe" src="https://www.youtube.com/embed/exampleVideo2" allowfullscreen></iframe>
+            </div>
+            <!-- Anúncio Entre Vídeos -->
+            <ins class="adsbygoogle"
+                 style="display:block; margin-top: 20px;"
+                 data-ad-client="ca-pub-6986092934254305"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
         <button class="logout-button" onclick="logout()">Sair</button>
     </section>
 
@@ -133,10 +150,6 @@
     </footer>
 
     <script>
-        const videoLinks = [
-            "https://www.youtube.com/embed/-46katYC2E0?rel=0",
-        ];
-
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
@@ -144,7 +157,6 @@
             if (username === "admin" && password === "1234") {
                 document.getElementById('loginSection').classList.remove("active");
                 document.getElementById('videoSection').classList.add("active");
-                loadVideoButtons();
             } else {
                 alert('ID ou senha incorretos!');
             }
@@ -153,32 +165,6 @@
         function logout() {
             document.getElementById('videoSection').classList.remove("active");
             document.getElementById('loginSection').classList.add("active");
-        }
-
-        function loadVideoButtons() {
-            const container = document.getElementById('videoContainer');
-            container.innerHTML = '';
-            videoLinks.forEach((link, index) => {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'video-wrapper';
-                const iframe = document.createElement('iframe');
-                iframe.src = link;
-                iframe.allowFullscreen = true;
-                iframe.className = 'responsive-iframe';
-                if (link) wrapper.appendChild(iframe);
-
-                // Anúncio entre vídeos
-                const ad = document.createElement('ins');
-                ad.className = 'adsbygoogle';
-                ad.style.display = 'block';
-                ad.setAttribute('data-ad-client', 'ca-pub-6986092934254305');
-                ad.setAttribute('data-ad-slot', '1234567890');
-                ad.setAttribute('data-ad-format', 'auto');
-                wrapper.appendChild(ad);
-                (adsbygoogle = window.adsbygoogle || []).push({});
-
-                container.appendChild(wrapper);
-            });
         }
     </script>
 </body>
