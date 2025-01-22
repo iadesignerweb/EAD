@@ -1,95 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6986092934254305" 
+    <!-- Código do Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6986092934254305"
             crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IADESIGNER • EAD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exstrende+Future:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Estilos Gerais */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Exstrende Future', Arial, sans-serif;
             background-color: #1a1a1a;
             color: #25D366;
-            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
             padding: 20px;
-            text-align: center;
         }
-        h1 {
-            color: #25D366;
-            margin-bottom: 20px;
-        }
+        h1 { color: #25D366; margin-bottom: 20px; }
+
+        /* Seção de Avisos */
         .avisos {
             background-color: #444;
             color: #fff;
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 20px;
-        }
-        .section { display: none; }
-        .section.active { display: block; }
-
-        .login-container, .video-container {
-            margin: 20px auto;
-            max-width: 300px;
             text-align: center;
-        }
-
-        input, button {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
         }
-        input { background-color: #fff; color: #000; }
-        button { background-color: #25D366; color: white; cursor: pointer; }
 
+        /* Login e Vídeos */
+        .login-section, .video-section { display: none; max-width: 350px; width: 100%; text-align: center; }
+        .login-section.active, .video-section.active { display: block; }
+        .login-section, .video-section { background: #333; padding: 20px; border-radius: 8px; }
         iframe {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 560px;
-            height: 315px;
             border: none;
             border-radius: 8px;
+            margin-bottom: 20px;
         }
+        .responsive-iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Proporção 16:9 */
+        }
+        input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+        button { width: 100%; padding: 10px; border-radius: 5px; border: none; cursor: pointer; }
+        .login-button { background-color: #25D366; color: white; font-size: 16px; }
+        .logout-button { background-color: #FF4B4B; color: white; font-size: 16px; margin-top: 15px; }
 
-        footer {
-            color: #ccc;
-            font-size: 12px;
+        /* Área de Vídeos */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
             margin-top: 20px;
         }
+        .video-wrapper {
+            width: 100%;
+            max-width: 560px;
+            aspect-ratio: 16 / 9;
+            background-color: #000;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .video-container button {
+            width: 100%;
+            max-width: 100px;
+            padding: 10px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .video-container button.watched { background-color: #800080; }
+
+        /* Rodapé */
+        footer { color: #ccc; font-size: 12px; margin-top: 20px; text-align: center; }
     </style>
 </head>
 <body>
     <h1>IADESIGNER • EAD</h1>
 
-    <!-- Avisos -->
+    <!-- Seção de Avisos -->
     <div class="avisos">
         <h2>AVISOS!</h2>
         <p>Terceira Turma - Entre em contato pelo WhatsApp - Início das aulas dia, 17/02/25.</p>
     </div>
 
-    <!-- Área de Login -->
-    <div class="section active" id="loginSection">
+    <!-- Seção de Login -->
+    <div class="login-section active" id="loginSection">
         <h2>Login</h2>
+        <iframe class="responsive-iframe" 
+                src="https://www.youtube.com/embed/-46katYC2E0?rel=0" 
+                allowfullscreen>
+        </iframe>
         <input type="text" id="username" placeholder="ID" required>
         <input type="password" id="password" placeholder="Senha" required>
-        <button onclick="login()">Entrar</button>
+        <button class="login-button" onclick="login()">Entrar</button>
     </div>
 
     <!-- Área de Vídeos -->
-    <div class="section" id="videoSection">
+    <section class="video-section" id="videoSection">
         <h2>Vídeos Disponíveis</h2>
         <div class="video-container" id="videoContainer"></div>
-        <iframe id="videoPlayer" src="" allowfullscreen></iframe>
-        <button onclick="logout()">Sair</button>
-    </div>
+        <button class="logout-button" onclick="logout()">Sair</button>
+    </section>
 
-    <!-- Anúncio -->
+    <!-- Anúncio do Google AdSense -->
     <ins class="adsbygoogle"
-         style="display:block; margin-top: 20px;"
+         style="display:block; text-align:center;"
          data-ad-client="ca-pub-6986092934254305"
          data-ad-slot="1234567890"
          data-ad-format="auto"></ins>
@@ -98,41 +126,27 @@
     </script>
 
     <footer>
+        <div class="social-icons">
+            <a href="https://instagram.com/iadesigner" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5587999786261" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
         &copy; Copyright 2024 • EAD IaDesigner
     </footer>
 
     <script>
-        const videoLinks = Array(30).fill(""); // URLs dos vídeos (você pode inserir aqui)
-        const videoContainer = document.getElementById('videoContainer');
-        const videoPlayer = document.getElementById('videoPlayer');
-        const loginSection = document.getElementById('loginSection');
-        const videoSection = document.getElementById('videoSection');
+        const videoLinks = [
+            "https://www.youtube.com/embed/-46katYC2E0?rel=0", // Exemplo de vídeo
+            "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+            "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+        ];
 
-        // Exibe botões para cada vídeo
-        function loadVideoButtons() {
-            videoContainer.innerHTML = "";
-            videoLinks.forEach((link, index) => {
-                const button = document.createElement('button');
-                button.textContent = `Vídeo ${index + 1}`;
-                button.onclick = () => {
-                    if (videoLinks[index]) {
-                        videoPlayer.src = videoLinks[index];
-                    } else {
-                        alert('URL não configurada para este vídeo.');
-                    }
-                };
-                videoContainer.appendChild(button);
-            });
-        }
-
-        // Sistema de Login
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            if (username === "admin" && password === "1234") { // ID e Senha padrão
-                loginSection.classList.remove('active');
-                videoSection.classList.add('active');
+            if (username === "admin" && password === "1234") {
+                document.getElementById('loginSection').classList.remove("active");
+                document.getElementById('videoSection').classList.add("active");
                 loadVideoButtons();
             } else {
                 alert('ID ou senha incorretos!');
@@ -140,8 +154,23 @@
         }
 
         function logout() {
-            videoSection.classList.remove('active');
-            loginSection.classList.add('active');
+            document.getElementById('videoSection').classList.remove("active");
+            document.getElementById('loginSection').classList.add("active");
+        }
+
+        function loadVideoButtons() {
+            const container = document.getElementById('videoContainer');
+            container.innerHTML = '';
+            videoLinks.forEach((link, index) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'video-wrapper';
+                const iframe = document.createElement('iframe');
+                iframe.src = link;
+                iframe.allowFullscreen = true;
+                iframe.className = 'responsive-iframe';
+                if (link) wrapper.appendChild(iframe);
+                container.appendChild(wrapper);
+            });
         }
     </script>
 </body>
