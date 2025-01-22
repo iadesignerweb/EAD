@@ -1,4 +1,4 @@
-<!DOCTYPE html>html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <!-- Código do Google AdSense -->
@@ -6,7 +6,7 @@
             crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IADESIGNER • EAD</title>
+    <title>PLÍNIO DESIGNER</title>
     <link href="https://fonts.googleapis.com/css2?family=Exstrende+Future:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -122,15 +122,51 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        /* Estilos para os ícones de redes sociais */
+        .social-icons {
+            display: flex;
+            gap: 15px; /* Espaço entre os ícones */
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #25D366; /* Cor de fundo personalizada */
+            border-radius: 50%; /* Formato circular */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Efeito de transição */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .social-icon i {
+            font-size: 24px; /* Tamanho do ícone */
+            color: white; /* Cor do ícone */
+        }
+
+        .social-icon:hover {
+            background-color: #128C7E; /* Cor de fundo ao passar o mouse */
+            transform: scale(1.1); /* Efeito de aumento */
+        }
+
+        .social-icon:active {
+            transform: scale(0.95); /* Efeito de redução ao clicar */
+        }
     </style>
 </head>
 <body>
-    <h1>IADESIGNER • EAD</h1>
+    <h1>PLÍNIO DESIGNER</h1>
 
     <!-- Seção de Avisos -->
     <div class="avisos">
         <h2>AVISOS!</h2>
-        <p>Terceira Turma - Entre em contato pelo WhatsApp - Início das aulas dia, 17/02/25.</p>
+        <p>Entre em contato pelo WhatsApp  e tenha acesso a área de membros com vídeo aulas e 200 IA's. 
+
+Seja membro! Teste liberado • ID:admin Senha:1234</p>
     </div>
 
     <!-- Seção de Login -->
@@ -156,18 +192,22 @@
     <div class="popup" id="popup">
         <div class="popup-content">
             <button class="close-btn" onclick="closePopup()">X</button>
-            <img src="https://via.placeholder.com/500x300" alt="Imagem da campanha">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/EAD/main/doar%20intelig%C3%AAncia%20artificial.png" alt="Imagem da campanha">
         </div>
     </div>
 
     <!-- Redes Sociais -->
     <div class="social-icons">
-        <a href="https://instagram.com/iadesigner" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/5587999786261" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/pliniofabricio_" target="_blank" class="social-icon">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/5587999786261" target="_blank" class="social-icon">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
 
     <footer>
-        &copy; Copyright 2024 • EAD IaDesigner
+            Biblioteca de IA's
     </footer>
 
     <script>
@@ -203,7 +243,7 @@
                 iframe.src = link;
                 iframe.allowFullscreen = true;
                 iframe.className = 'responsive-iframe';
-                if (link) wrapper.appendChild(iframe);
+                wrapper.appendChild(iframe);
                 container.appendChild(wrapper);
             });
         }
@@ -219,5 +259,269 @@
         // Exibir popup automaticamente após 15 segundos
         setTimeout(openPopup, 15000);
     </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Bibliotecas Inteligentes</title>
+
+  <!-- Link para o Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Reset de estilo */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Corpo da página */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Cabeçalho com a imagem */
+    header {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+
+    header img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #b0b0b0;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    /* Container das bibliotecas usando Grid */
+    .libraries-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Usando grid responsivo */
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* Cartão de biblioteca com proporção 2:3 */
+    .library-card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      aspect-ratio: 2 / 3; /* Garantir proporção 2:3 */
+    }
+
+    .library-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .library-card h2 {
+      font-size: 1.6rem;
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+
+    .library-card p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .library-card .description {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Biblioteca com borda colorida */
+    .library-card:nth-child(odd) {
+      border-left: 5px solid #ff0077;
+    }
+
+    .library-card:nth-child(even) {
+      border-left: 5px solid #ff9900;
+    }
+
+    /* Rodapé */
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #1e1e1e;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      font-size: 2.5rem;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #4CAF50;
+    }
+
+    /* Ícones coloridos */
+    .social-icons a:nth-child(1) {
+      color: #1877F2; /* Facebook */
+    }
+
+    .social-icons a:nth-child(2) {
+      color: #E4405F; /* Instagram */
+    }
+
+    .social-icons a:nth-child(3) {
+      color: #1DA1F2; /* Twitter */
+    }
+
+    .social-icons a:nth-child(4) {
+      color: #FF0000; /* YouTube */
+    }
+
+    .social-icons a:nth-child(5) {
+      color: #25D366; /* WhatsApp */
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      color: #bbb;
+      margin-top: 20px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .library-card {
+        width: 100%; /* Largura total para telas menores */
+        height: auto; /* Ajuste para não forçar o tamanho */
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .library-card {
+        width: 100%;
+        height: auto;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .social-icons a {
+        font-size: 1.5rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho com imagem -->
+  <header>
+    <!-- Coloque o link da imagem aqui -->
+    <img src="https://raw.githubusercontent.com/iadesignerweb/EAD/refs/heads/main/Banner%20de%20site%2C%20Pl%C3%ADnio%20Fabr%C3%ADcio%2C%20Capa%20de%20YouTube.png" alt="Plataforma de Bibliotecas Inteligentes">
+  </header>
+
+  <p>Explore as bibliotecas de IA mais modernas e poderosas do mercado. Cada uma delas oferece soluções inovadoras para transformar seu negócio com tecnologia de ponta. Entre em contato para liberação da 200 IA's. Não perca tempo. O futuro é hoje!</p>
+
+  <!-- Container das bibliotecas -->
+  <div class="libraries-container">
+
+    <!-- Biblioteca 1 -->
+    <div class="library-card">
+      <h2>ChatGPT</h2>
+      <p><strong>Descrição:</strong> Descrição: Um modelo de linguagem avançado desenvolvido pela OpenAI, baseado na arquitetura GPT (Generative Pre-trained Transformer). Ele é projetado para entender e gerar texto humano de forma fluente, sendo capaz de responder a perguntas, realizar tarefas de tradução, escrever textos criativos, e muito mais.</p>
+      <p class="description">Ideal para: Assistentes virtuais, chatbots, suporte ao cliente, geração de conteúdo, e automação de respostas em diversos contextos de comunicação.</p>
+    </div>
+
+    <!-- Biblioteca 2 -->
+    <div class="library-card">
+      <h2>Canva IA</h2>
+      <p><strong>Descrição:</strong> Descrição: Uma plataforma de design gráfico online que permite criar e editar imagens, apresentações, vídeos e outros tipos de conteúdo visual de maneira fácil e intuitiva. Oferece uma vasta gama de templates personalizáveis e ferramentas de design acessíveis para usuários de todos os níveis.</p>
+      <p class="description">Ideal para: Criadores de conteúdo, empreendedores, equipes de marketing, e qualquer pessoa que precise de designs rápidos e profissionais sem a necessidade de habilidades avançadas em design gráfico.</p>
+    </div>
+
+    <!-- Biblioteca 3 -->
+    <div class="library-card">
+      <h2>Wavy</h2>
+      <p><strong>Descrição:</strong> Descrição: Wavy é uma ferramenta de design e animação visual que permite criar vídeos e gráficos animados de forma simples e dinâmica. Com foco em facilitar o processo criativo, oferece templates e recursos personalizáveis para criar conteúdos visuais interativos e modernos.</p>
+      <p class="description">Ideal para: Designers, criadores de conteúdo, profissionais de marketing e empresas que buscam criar animações e vídeos cativantes de maneira ágil e acessível.</p>
+    </div>
+
+    <!-- Biblioteca 4 -->
+    <div class="library-card">
+      <h2>Copilot</h2>
+      <p><strong>Descrição:</strong> Descrição: Copilot é uma ferramenta de assistência de codificação desenvolvida pela OpenAI em parceria com o GitHub. Baseada em inteligência artificial, ela sugere trechos de código, fornece explicações e ajuda os desenvolvedores a escrever código de maneira mais eficiente e rápida.</p>
+      <p class="description">Ideal para: Desenvolvedores de software, programadores e engenheiros de sistemas que buscam uma ferramenta que melhore a produtividade e facilite a escrita de código, reduzindo erros e aumentando a qualidade do trabalho.</p>
+    </div>
+
+    <!-- Biblioteca 5 -->
+    <div class="library-card">
+      <h2>Murf AI</h2>
+      <p><strong>Descrição:</strong> Descrição: Murf AI é uma plataforma de inteligência artificial focada em converter texto em fala (text-to-speech) de alta qualidade. Ela oferece vozes naturais e realistas, permitindo a criação de áudios e narrações a partir de textos para uma variedade de usos, como vídeos, audiobooks, e-learning e podcasts.</p>
+      <p class="description">Ideal para: Criadores de conteúdo, educadores, empresas de marketing e desenvolvedores que precisam de uma solução eficiente para gerar áudios realistas e dinâmicos, sem a necessidade de gravação manual.</p>
+    </div>
+
+    <!-- Biblioteca 6 -->
+    <div class="library-card">
+      <h2>Submagic</h2>
+      <p><strong>Descrição:</strong> Descrição: Submagic é uma ferramenta de inteligência artificial projetada para gerar legendas automáticas com alta precisão para vídeos. Ela utiliza tecnologia de transcrição avançada para criar legendas rapidamente e com qualidade, melhorando a acessibilidade e o engajamento dos vídeos.</p>
+      <p class="description">Ideal para: Criadores de conteúdo, empresas de mídia, educadores e qualquer pessoa que precise de uma maneira eficiente de adicionar legendas aos seus vídeos, economizando tempo e aumentando a acessibilidade para um público mais amplo.</p>
+    </div>
+
+  </div>
+
+  <!-- Rodapé com ícones de redes sociais -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://facebook.com/pliniofabricio.72" target="_blank"><i class="fab fa-facebook"></i></a> <!-- Facebook -->
+      <a href="https://instagram.com/pliniofabricio_" target="_blank"><i class="fab fa-instagram"></i></a> <!-- Instagram -->
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a> <!-- Twitter -->
+      <a href="https://youtube.com/@pliniofabricio_" target="_blank"><i class="fab fa-youtube"></i></a> <!-- YouTube -->
+      <a href="https://wa.me/5587999786261" target="_blank"><i class="fab fa-whatsapp"></i></a> <!-- WhatsApp -->
+    </div>
+    <p class="copyright">© Copyright 2025 - Plínio Designer</p>
+  </footer>
+
 </body>
 </html>
