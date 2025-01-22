@@ -27,22 +27,25 @@
             border-radius: 5px;
             margin-bottom: 20px;
         }
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
+        .section { display: none; }
+        .section.active { display: block; }
+
+        .login-container, .video-container {
+            margin: 20px auto;
+            max-width: 300px;
+            text-align: center;
         }
-        .video-container button {
-            width: 80px;
+
+        input, button {
+            width: 100%;
             padding: 10px;
-            background-color: #25D366;
-            color: white;
-            border: none;
+            margin: 10px 0;
             border-radius: 5px;
-            cursor: pointer;
+            border: none;
         }
+        input { background-color: #fff; color: #000; }
+        button { background-color: #25D366; color: white; cursor: pointer; }
+
         iframe {
             margin-top: 20px;
             width: 100%;
@@ -51,6 +54,7 @@
             border: none;
             border-radius: 8px;
         }
+
         footer {
             color: #ccc;
             font-size: 12px;
@@ -67,7 +71,23 @@
         <p>Terceira Turma - Entre em contato pelo WhatsApp - Início das aulas dia, 17/02/25.</p>
     </div>
 
-    <!-- Área de Anúncio -->
+    <!-- Área de Login -->
+    <div class="section active" id="loginSection">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="ID" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button onclick="login()">Entrar</button>
+    </div>
+
+    <!-- Área de Vídeos -->
+    <div class="section" id="videoSection">
+        <h2>Vídeos Disponíveis</h2>
+        <div class="video-container" id="videoContainer"></div>
+        <iframe id="videoPlayer" src="" allowfullscreen></iframe>
+        <button onclick="logout()">Sair</button>
+    </div>
+
+    <!-- Anúncio -->
     <ins class="adsbygoogle"
          style="display:block; margin-top: 20px;"
          data-ad-client="ca-pub-6986092934254305"
@@ -77,37 +97,52 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 
-    <!-- Área de Vídeos -->
-    <section>
-        <h2>Vídeos Disponíveis</h2>
-        <div class="video-container" id="videoContainer">
-            <!-- Botões de vídeos gerados dinamicamente -->
-        </div>
-        <iframe id="videoPlayer" src="" allowfullscreen></iframe>
-    </section>
-
     <footer>
         &copy; Copyright 2024 • EAD IaDesigner
     </footer>
 
     <script>
-        const videoLinks = Array(30).fill(""); // Array de 30 espaços para você adicionar URLs
-        const container = document.getElementById('videoContainer');
+        const videoLinks = Array(30).fill(""); // URLs dos vídeos (você pode inserir aqui)
+        const videoContainer = document.getElementById('videoContainer');
         const videoPlayer = document.getElementById('videoPlayer');
+        const loginSection = document.getElementById('loginSection');
+        const videoSection = document.getElementById('videoSection');
 
-        // Gera botões para cada vídeo
-        videoLinks.forEach((_, index) => {
-            const button = document.createElement('button');
-            button.textContent = `Vídeo ${index + 1}`;
-            button.onclick = () => {
-                if (videoLinks[index]) {
-                    videoPlayer.src = videoLinks[index];
-                } else {
-                    alert('URL não configurada para este vídeo.');
-                }
-            };
-            container.appendChild(button);
-        });
+        // Exibe botões para cada vídeo
+        function loadVideoButtons() {
+            videoContainer.innerHTML = "";
+            videoLinks.forEach((link, index) => {
+                const button = document.createElement('button');
+                button.textContent = `Vídeo ${index + 1}`;
+                button.onclick = () => {
+                    if (videoLinks[index]) {
+                        videoPlayer.src = videoLinks[index];
+                    } else {
+                        alert('URL não configurada para este vídeo.');
+                    }
+                };
+                videoContainer.appendChild(button);
+            });
+        }
+
+        // Sistema de Login
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === "admin" && password === "1234") { // ID e Senha padrão
+                loginSection.classList.remove('active');
+                videoSection.classList.add('active');
+                loadVideoButtons();
+            } else {
+                alert('ID ou senha incorretos!');
+            }
+        }
+
+        function logout() {
+            videoSection.classList.remove('active');
+            loginSection.classList.add('active');
+        }
     </script>
 </body>
 </html>
