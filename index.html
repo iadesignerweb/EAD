@@ -16,6 +16,63 @@
       height: 100vh;
       background: url('https://raw.githubusercontent.com/iadesignerweb/EAD/refs/heads/main/Banco%20de%20Imagens%2C%20Plinio%20Fabricio.png') no-repeat center center;
       background-size: cover;
+      flex-direction: column;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .menu .hamburger {
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      border-top: 1px solid #ff8c00;
+    }
+
+    .menu ul li {
+      text-align: left;
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+      padding-left: 20px; /* Alinha os links à esquerda */
+    }
+
+    .menu ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .menu ul li a:hover {
+      color: #ff8c00;
+    }
+
+    .menu.active ul {
+      display: flex;
     }
 
     .container {
@@ -26,6 +83,7 @@
       max-width: 400px;
       text-align: center;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      display: none; /* Esconde o formulário de login inicialmente */
     }
 
     .container h1 {
@@ -67,38 +125,54 @@
       display: none;
     }
 
-    #imageContainer {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
+    .back-btn {
       margin-top: 20px;
-      width: 90%;
-    }
-
-    #imageContainer img {
-      width: 100%;
-      border-radius: 5px;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
+      background: #333;
       color: white;
-      border-radius: 50%;
-      padding: 15px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
-      z-index: 1000;
+      font-size: 16px;
     }
 
-    .whatsapp-float i {
-      font-size: 24px;
+    .back-btn:hover {
+      background: #ff8c00;
+    }
+
+    /* Área do conteúdo principal onde os links serão carregados */
+    .iframe-container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    iframe {
+      width: 80%;
+      height: 80%;
+      border: none;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="menu">
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul>
+      <li><a href="https://iadesignerweb.github.io/ADM/" target="_self" onclick="loadIframe('https://www.google.com')">Gestão de Cidades</a></li>
+      <li><a href="https://iadesignerweb.github.io/Pixall-IA/" target="_self" onclick="loadIframe('https://iadesignerweb.github.io/Chatbot Empresarial/')">Chatbot's</a></li>
+    </ul>
+  </div>
+
+  <!-- Área onde o conteúdo das páginas será carregado -->
+  <div class="iframe-container" id="iframeContainer">
+    <iframe id="iframeContent" src="" style="display:none;"></iframe>
+  </div>
+
   <div class="container">
     <h1>Login</h1>
     <form id="loginForm">
@@ -114,16 +188,23 @@
         <input type="text" id="query" placeholder="Digite um termo para buscar imagens" required>
         <button type="submit" class="btn">Buscar</button>
       </form>
-      <div id="imageContainer"></div>
+      <button class="back-btn" onclick="backToLogin()">Voltar para o Login</button>
     </div>
   </div>
 
-  <a href="https://wa.me/5587999786261" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
   <script>
-    // Função de Login
+    function toggleMenu() {
+      document.querySelector('.menu').classList.toggle('active');
+    }
+
+    function loadIframe(url) {
+      const iframe = document.getElementById('iframeContent');
+      iframe.src = url;
+      iframe.style.display = 'block'; // Exibe o iframe quando a página for carregada
+      document.getElementById('iframeContainer').style.display = 'flex'; // Exibe o contêiner
+      document.querySelector('.container').style.display = 'none'; // Esconde o formulário de login
+    }
+
     document.getElementById('loginForm').addEventListener('submit', function(event) {
       event.preventDefault();
       const username = document.getElementById('username').value;
@@ -137,38 +218,11 @@
       }
     });
 
-    // Função de Busca de Imagens
-    document.getElementById('searchForm').addEventListener('submit', async function(event) {
-      event.preventDefault();
-      const query = document.getElementById('query').value;
-      const apiKey = 'LF21Phlmn-s1flC0n1Y-mcsI0cTDrXRM403_7lcokmQ'; // Substitua pela sua chave de API
-      const apiUrl = `https://api.unsplash.com/search/photos?page=1&query=${encodeURIComponent(query)}&client_id=${apiKey}`;
-      const imageContainer = document.getElementById('imageContainer');
-
-      imageContainer.innerHTML = 'Carregando...';
-
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error('Erro ao buscar imagens');
-        const data = await response.json();
-
-        if (data.results.length === 0) {
-          imageContainer.innerHTML = 'Nenhuma imagem encontrada.';
-          return;
-        }
-
-        imageContainer.innerHTML = '';
-        data.results.forEach(image => {
-          const imgElement = document.createElement('img');
-          imgElement.src = image.urls.small;
-          imgElement.alt = image.alt_description || 'Imagem do Unsplash';
-          imageContainer.appendChild(imgElement);
-        });
-      } catch (error) {
-        console.error('Erro:', error);
-        imageContainer.innerHTML = 'Erro ao buscar imagens. Tente novamente mais tarde.';
-      }
-    });
+    function backToLogin() {
+      document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('searchSection').classList.add('hidden');
+      document.getElementById('iframeContainer').style.display = 'none'; // Esconde o iframe
+    }
   </script>
 </body>
 </html>
