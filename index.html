@@ -16,7 +16,6 @@
       height: 100vh;
       background: url('https://raw.githubusercontent.com/iadesignerweb/EAD/refs/heads/main/Banco%20de%20Imagens%2C%20Plinio%20Fabricio.png') no-repeat center center;
       background-size: cover;
-      flex-direction: column;
     }
 
     .menu {
@@ -54,10 +53,9 @@
     }
 
     .menu ul li {
-      text-align: left;
+      text-align: center;
       padding: 10px 0;
       border-bottom: 1px solid #333;
-      padding-left: 20px; /* Alinha os links à esquerda */
     }
 
     .menu ul li a {
@@ -83,7 +81,6 @@
       max-width: 400px;
       text-align: center;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-      display: none; /* Esconde o formulário de login inicialmente */
     }
 
     .container h1 {
@@ -124,37 +121,6 @@
     .hidden {
       display: none;
     }
-
-    .back-btn {
-      margin-top: 20px;
-      background: #333;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .back-btn:hover {
-      background: #ff8c00;
-    }
-
-    /* Área do conteúdo principal onde os links serão carregados */
-    .iframe-container {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    iframe {
-      width: 80%;
-      height: 80%;
-      border: none;
-      border-radius: 10px;
-    }
   </style>
 </head>
 <body>
@@ -163,15 +129,11 @@
       <i class="fas fa-bars"></i>
     </div>
     <ul>
-      <li><a href="https://iadesignerweb.github.io/ADM/" target="_self" onclick="loadIframe('https://www.google.com')">Gestão de Cidades</a></li>
-      <li><a href="https://iadesignerweb.github.io/Pixall-IA/" target="_self" onclick="loadIframe('https://iadesignerweb.github.io/Chatbot Empresarial/')">Chatbot's</a></li>
+      <li><a href="https://iadesignerweb.github.io/Pixall-IA/
+Audio" target="_blank">Gerador de Áudio</a></li>
+      <li><a href="https://iadesignerweb.github.io/ADM/" target="_blank">Gestão de Cidades</a></li>
     </ul>
-  </div>
-
-  <!-- Área onde o conteúdo das páginas será carregado -->
-  <div class="iframe-container" id="iframeContainer">
-    <iframe id="iframeContent" src="" style="display:none;"></iframe>
-  </div>
+</div>
 
   <div class="container">
     <h1>Login</h1>
@@ -188,21 +150,12 @@
         <input type="text" id="query" placeholder="Digite um termo para buscar imagens" required>
         <button type="submit" class="btn">Buscar</button>
       </form>
-      <button class="back-btn" onclick="backToLogin()">Voltar para o Login</button>
     </div>
   </div>
 
   <script>
     function toggleMenu() {
       document.querySelector('.menu').classList.toggle('active');
-    }
-
-    function loadIframe(url) {
-      const iframe = document.getElementById('iframeContent');
-      iframe.src = url;
-      iframe.style.display = 'block'; // Exibe o iframe quando a página for carregada
-      document.getElementById('iframeContainer').style.display = 'flex'; // Exibe o contêiner
-      document.querySelector('.container').style.display = 'none'; // Esconde o formulário de login
     }
 
     document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -217,12 +170,6 @@
         document.getElementById('errorMessage').textContent = 'Credenciais inválidas. Tente novamente.';
       }
     });
-
-    function backToLogin() {
-      document.getElementById('loginForm').classList.remove('hidden');
-      document.getElementById('searchSection').classList.add('hidden');
-      document.getElementById('iframeContainer').style.display = 'none'; // Esconde o iframe
-    }
   </script>
 </body>
 </html>
