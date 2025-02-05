@@ -21,56 +21,67 @@
     .menu {
       position: fixed;
       top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      transition: left 0.4s ease-in-out;
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      flex-direction: column;
+      box-shadow: 3px 0 5px rgba(0, 0, 0, 0.5);
     }
 
-    .menu .hamburger {
+    .menu.active {
+      left: 0;
+    }
+
+    .hamburger {
+      position: absolute;
+      top: 10px;
+      right: -60px;
       font-size: 24px;
       color: white;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 5px;
       cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger:hover {
+      transform: scale(1.1);
     }
 
     .menu ul {
       list-style: none;
-      padding: 0;
+      padding: 20px;
       margin: 0;
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      border-top: 1px solid #ff8c00;
     }
 
     .menu ul li {
-      text-align: center;
-      padding: 10px 0;
+      padding: 15px 10px;
       border-bottom: 1px solid #333;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    .menu.active ul li {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .menu ul li a {
       color: white;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 18px;
       transition: color 0.3s ease;
+      display: block;
     }
 
     .menu ul li a:hover {
       color: #ff8c00;
-    }
-
-    .menu.active ul {
-      display: flex;
     }
 
     .container {
@@ -122,19 +133,6 @@
       display: none;
     }
 
-    /* Ajuste do tamanho das imagens do Pixabay para proporção 2:3 */
-    .image-item {
-      margin: 10px;
-      display: inline-block;
-      width: 200px;
-      height: 300px; /* Proporção 2:3 */
-      background-size: cover;
-      background-position: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Botão flutuante do WhatsApp com ícone branco */
     .whatsapp-btn {
       position: fixed;
       bottom: 20px;
@@ -151,18 +149,18 @@
     }
 
     .whatsapp-btn i {
-      color: white; /* Ícone branco */
+      color: white;
       font-size: 24px;
     }
   </style>
 </head>
 <body>
-  <div class="menu">
+  <div class="menu" id="menu">
     <div class="hamburger" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
     </div>
     <ul>
-      <li><a href="https://iadesignerweb.github.io/Pixall-IA/" target="_blank">Converter 2D em 3D'</a></li>
+      <li><a href="https://iadesignerweb.github.io/Pixall-IA/" target="_blank">Converter 2D em 3D</a></li>
       <li><a href="https://raw.githubusercontent.com/iadesignerweb/EAD/refs/heads/main/Plinio%20Studio%2C%20IA%2C%20Pl%C3%ADnio%20Designer.png" target="_blank">Biblioteca de IA's</a></li>
       <li><a href="https://iadesignerweb.github.io/ADM/" target="_blank">Gestão de Cidades</a></li>
       <li><a href="https://iadesignerweb.github.io/imagens/">Preços</a></li>
@@ -190,45 +188,22 @@
     </div>
   </div>
 
-  <!-- Botão flutuante do WhatsApp -->
   <div class="whatsapp-btn" onclick="window.open('https://wa.me/seunumerodetelefone', '_blank')">
     <i class="fab fa-whatsapp"></i>
   </div>
 
   <script>
     function toggleMenu() {
-      document.querySelector('.menu').classList.toggle('active');
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+
+      document.querySelectorAll('.menu ul li').forEach((item, index) => {
+        setTimeout(() => {
+          item.style.opacity = menu.classList.contains('active') ? '1' : '0';
+          item.style.transform = menu.classList.contains('active') ? 'translateX(0)' : 'translateX(-20px)';
+        }, index * 100);
+      });
     }
-
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      if (username === 'admin' && password === '1234') {
-        document.getElementById('loginForm').classList.add('hidden');
-        document.getElementById('searchSection').classList.remove('hidden');
-      } else {
-        document.getElementById('errorMessage').textContent = 'Credenciais inválidas. Tente novamente.';
-      }
-    });
-
-    document.getElementById('searchForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const query = document.getElementById('query').value;
-      fetch(`https://pixabay.com/api/?key=28917727-a0ff170bd24e2129bdad0726f&q=${query}&image_type=photo`)
-        .then(response => response.json())
-        .then(data => {
-          const resultsDiv = document.getElementById('imageResults');
-          resultsDiv.innerHTML = '';
-          data.hits.forEach(image => {
-            const img = document.createElement('div');
-            img.classList.add('image-item');
-            img.style.backgroundImage = `url(${image.webformatURL})`;
-            resultsDiv.appendChild(img);
-          });
-        });
-    });
   </script>
 </body>
 </html>
