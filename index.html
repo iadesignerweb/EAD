@@ -152,6 +152,27 @@
       color: white;
       font-size: 24px;
     }
+
+    .download-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .download-button a {
+      background: linear-gradient(45deg, #ff8c00, #ff6a00);
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .download-button a:hover {
+      background: linear-gradient(45deg, #ff6a00, #ff8c00);
+    }
   </style>
 </head>
 <body>
@@ -167,8 +188,14 @@
       <li><a href="https://iadesignerweb.github.io/imagens/">Preços</a></li>
       <li><a href="https://iadesignerweb.github.io/free/" target="_blank">Modelos de Chat</a></li>
       <li><a href="https://iadesignerweb.github.io/media/" target="_blank">E-Books</a></li>
-      <li><a href="https://raw.githubusercontent.com/iadesignerweb/EAD/refs/heads/main/Aplicativo%20de%20Filmes.jpg" target="_blank">APK de Filmes e Séries</a></li>
-      <li><a href="https://www.mediafire.com/file/gp6ri2jpio1tbsz/EAD_-_Curso_de_IA.apk/file" target="_blank">Baixe Nosso APK</a></li>
+      <li>
+        <a href="https://raw.githubusercontent.com/iadesignerweb/EAD/refs/heads/main/Aplicativo%20de%20Filmes.jpg" target="_blank">
+          APK de Filmes e Séries
+        </a>
+        <div class="download-button">
+          <a href="https://www.mediafire.com/file/gp6ri2jpio1tbsz/EAD_-_Curso_de_IA.apk/file" target="_blank">ASSISTA GRÁTIS</a>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -180,33 +207,23 @@
       <button type="submit" class="btn">Entrar</button>
       <p class="error" id="errorMessage"></p>
     </form>
-
-    <div id="searchSection" class="hidden">
-      <h1>Busca de Imagens</h1>
-      <form id="searchForm">
-        <input type="text" id="query" placeholder="Digite um termo para buscar imagens" required>
-        <button type="submit" class="btn">Buscar</button>
-      </form>
-      <div id="imageResults"></div>
-    </div>
-  </div>
-
-  <div class="whatsapp-btn" onclick="window.open('https://wa.me/seunumerodetelefone', '_blank')">
-    <i class="fab fa-whatsapp"></i>
   </div>
 
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('active');
-
-      document.querySelectorAll('.menu ul li').forEach((item, index) => {
-        setTimeout(() => {
-          item.style.opacity = menu.classList.contains('active') ? '1' : '0';
-          item.style.transform = menu.classList.contains('active') ? 'translateX(0)' : 'translateX(-20px)';
-        }, index * 100);
-      });
+      document.getElementById('menu').classList.toggle('active');
     }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (user === "admin" && pass === "4321") {
+        alert("Login bem-sucedido!");
+      } else {
+        document.getElementById('errorMessage').innerText = "Usuário ou senha incorretos!";
+      }
+    });
   </script>
 </body>
 </html>
