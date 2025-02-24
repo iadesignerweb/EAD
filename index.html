@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,115 +16,96 @@
       height: 100vh;
       background: url('https://raw.githubusercontent.com/iadesignerweb/EAD/refs/heads/main/Site%20Plinio%20Designer.png') no-repeat center center;
       background-size: cover;
-    }.menu {
-  position: fixed;
-  top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
-  transition: left 0.4s ease-in-out;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 3px 0 5px rgba(0, 0, 0, 0.5);
-}
+    }
 
-.menu.active {
-  left: 0;
-}
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      transition: left 0.4s ease-in-out;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 3px 0 5px rgba(0, 0, 0, 0.5);
+    }
 
-.hamburger {
-  position: absolute;
-  top: 10px;
-  right: -60px;
-  font-size: 24px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
+    .menu.active {
+      left: 0;
+    }
 
-.hamburger:hover {
-  transform: scale(1.1);
-}
+    .hamburger {
+      position: absolute;
+      top: 10px;
+      right: -60px;
+      font-size: 24px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-.login-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
-  padding: 15px;
-  width: 200px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
+    .hamburger:hover {
+      transform: scale(1.1);
+    }
 
-.login-container h1 {
-  font-size: 18px;
-  color: #ff8c00;
-  margin-bottom: 10px;
-}
+    .menu ul {
+      list-style: none;
+      padding: 20px;
+      margin: 0;
+    }
 
-.login-container input {
-  width: 90%;
-  padding: 8px;
-  margin: 5px 0;
-  border: none;
-  border-radius: 5px;
-}
+    .menu ul li {
+      padding: 15px 10px;
+      border-bottom: 1px solid #333;
+    }
 
-.login-container .btn {
-  background: linear-gradient(45deg, #ff8c00, #ff6a00);
-  border: none;
-  color: white;
-  padding: 8px;
-  width: 90%;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
+    .menu ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      display: block;
+    }
 
-.login-container .btn:hover {
-  background: linear-gradient(45deg, #ff6a00, #ff8c00);
-}
+    .menu ul li a:hover {
+      color: #ff8c00;
+    }
 
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-}
+    .id-box {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #ff8c00;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-.whatsapp-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: linear-gradient(45deg, #25d366, #128C7E);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #25d366, #128c7e);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
 
-.whatsapp-btn i {
-  color: white;
-  font-size: 28px;
-}
-
-.whatsapp-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-}
-
+    .whatsapp-btn i {
+      color: white;
+      font-size: 28px;
+    }
   </style>
 </head>
 <body>
@@ -132,37 +114,24 @@
       <i class="fas fa-bars"></i>
     </div>
     <ul>
-      <li><a href="https://iadesignerweb.github.io/Pixall-IA/" target="_self">Converter 2D em 3D</a></li>
-      <li><a href="https://iadesignerweb.github.io/IAs-/" target="_self">Transcrição - Teste</a></li>
-      <li><a href="https://iadesignerweb.github.io/ADM/" target="_self">Gestão de Cidades</a></li>
-      <li><a href="https://iadesignerweb.github.io/imagens/" target="_self">Preços</a></li>
-      <li><a href="https://iadesignerweb.github.io/free/" target="_self">Modelos de Chat</a></li>
-      <li><a href="https://iadesignerweb.github.io/media/" target="_self">E-Books</a></li>
+      <li><a href="https://iadesignerweb.github.io/Pixall-IA/" target="_blank">Converter 2D em 3D</a></li>
+      <li><a href="https://iadesignerweb.github.io/IAs-/" target="_blank">Transcrição - Teste</a></li>
+      <li><a href="https://iadesignerweb.github.io/ADM/" target="_blank">Gestão de Cidades</a></li>
+      <li><a href="https://iadesignerweb.github.io/imagens/">Preços</a></li>
+      <li><a href="https://iadesignerweb.github.io/free/" target="_blank">Modelos de Chat</a></li>
+      <li><a href="https://iadesignerweb.github.io/media/" target="_blank">E-Books</a></li>
     </ul>
-  </div>  <div class="login-container">
-    <h1>Login</h1>
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Usuário" required><br>
-      <input type="password" id="password" placeholder="Senha" required><br>
-      <button type="submit" class="btn">Entrar</button>
-      <p class="error" id="errorMessage"></p>
-    </form>
-  </div>  <div class="whatsapp-btn" onclick="window.open('https://wa.me/seunumerodetelefone', '_blank')">
+  </div>
+
+  <div class="id-box">ID</div>
+  <div class="whatsapp-btn">
     <i class="fab fa-whatsapp"></i>
-  </div>  <script>
+  </div>
+
+  <script>
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('active');
     }
-
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const user = document.getElementById('username').value;
-      const pass = document.getElementById('password').value;
-      if (user === "admin" && pass === "4321") {
-        alert("Login bem-sucedido!");
-      } else {
-        document.getElementById('errorMessage').innerText = "Usuário ou senha incorretos!";
-      }
-    });
-  </script></body>
+  </script>
+</body>
 </html>
