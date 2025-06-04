@@ -1,136 +1,161 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IaDesigner</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Áudio Incorporado</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: url('https://raw.githubusercontent.com/iadesignerweb/EAD/refs/heads/main/Site%20Plinio%20Designer.png') no-repeat center center;
-      background-size: cover;
-    }
-
-    .menu {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
-      transition: left 0.4s ease-in-out;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 3px 0 5px rgba(0, 0, 0, 0.5);
-    }
-
-    .menu.active {
-      left: 0;
-    }
-
-    .hamburger {
-      position: absolute;
-      top: 10px;
-      right: -60px;
-      font-size: 24px;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .hamburger:hover {
-      transform: scale(1.1);
-    }
-
-    .menu ul {
-      list-style: none;
-      padding: 20px;
-      margin: 0;
-    }
-
-    .menu ul li {
-      padding: 15px 10px;
-      border-bottom: 1px solid #333;
-    }
-
-    .menu ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      display: block;
-    }
-
-    .menu ul li a:hover {
-      color: #ff8c00;
-    }
-
-    .id-box {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background-color: #ff8c00;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(45deg, #25d366, #128c7e);
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-    }
-
-    .whatsapp-btn i {
-      color: white;
-      font-size: 28px;
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; }
+    .header { background-color: #25D366; color: white; text-align: center; padding: 15px; font-size: 1.5em; font-weight: bold; }
+    .chat-container { max-width: 500px; margin: 20px auto; background: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+    .message { padding: 10px; margin: 10px; border-radius: 8px; }
+    .user-message { background-color: #DCF8C6; text-align: right; }
+    .bot-message { background-color: #E8F5E9; text-align: left; }
+    .input-container { display: flex; padding: 10px; background: #f0f0f0; border-top: 1px solid #ddd; }
+    .input-container input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+    .input-container button { padding: 8px 15px; margin-left: 5px; border: none; background-color: #25D366; color: #fff; border-radius: 4px; cursor: pointer; }
+    .footer { background-color: #333; color: white; text-align: center; padding: 10px; font-size: 0.9em; }
+    .typing { color: #888; font-style: italic; }
+    .video-section { text-align: center; padding: 20px; background-color: #fafafa; }
+    .video-section h3 { font-size: 1.2em; color: #333; }
+    .audio-container { display: flex; align-items: center; margin: 10px 0; }
+    /* Responsividade */
+    @media (max-width: 600px) {
+        .chat-container { width: 100%; }
+        .input-container { flex-direction: column; }
+        .input-container input { margin-bottom: 10px; }
     }
   </style>
 </head>
 <body>
-  <div class="menu" id="menu">
-    <div class="hamburger" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
-    <ul>
-      <li><a href="https://iadesignerweb.github.io/Pixall-IA/" target="_blank">Converter 2D em 3D</a></li>
-      <li><a href="https://iadesignerweb.github.io/IAs-/" target="_blank">Transcrição - Teste</a></li>
-      <li><a href="https://iadesignerweb.github.io/ADM/" target="_blank">Gestão de Cidades</a></li>
-      <li><a href="https://iadesignerweb.github.io/imagens/">Preços</a></li>
-      <li><a href="https://iadesignerweb.github.io/free/" target="_blank">Modelos de Chat</a></li>
-      <li><a href="https://iadesignerweb.github.io/media/" target="_blank">E-Books</a></li>
-    </ul>
+  <div class="header">Agência de IA</div>
+  <div class="chat-container" id="chat-container">
+    <div class="bot-message message">Olá! Sou um assistente virtual. Como posso ajudar?</div>
+  </div>
+  
+  <div class="input-container">
+    <input type="text" id="user-input" placeholder="Digite sua mensagem aqui...">
+    <button onclick="sendMessage()">Enviar</button>
+  </div>
+  
+  <div class="video-section">
+    <h3>Vídeo Demonstrativo</h3>
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ou5OB2roFRk?si=bN4ocqqVlCTEqOWR" 
+            title="Vídeo Demonstrativo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
   </div>
 
-  <div class="id-box">ID</div>
-  <div class="whatsapp-btn">
-    <i class="fab fa-whatsapp"></i>
-  </div>
-
+  <div class="footer">© 2024 Plinio Studio. Todos os direitos reservados.</div>
+  
   <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('active');
+    const chatContainer = document.getElementById("chat-container");
+    let autoResponsesCompleted = false;
+
+    function appendMessage(text, className) {
+      const messageElement = document.createElement("div");
+      messageElement.className = `message ${className}`;
+      messageElement.innerHTML = text;
+      chatContainer.appendChild(messageElement);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+    
+    function simulateTyping(callback) {
+      const typingIndicator = document.createElement("div");
+      typingIndicator.className = "typing bot-message message";
+      typingIndicator.innerText = "Assistente digitando...";
+      chatContainer.appendChild(typingIndicator);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      setTimeout(() => {
+        typingIndicator.remove();
+        callback();
+      }, 4000); // Intervalo de 3 segundos entre mensagens automáticas
+    }
+    
+    function sendMessage() {
+      const userInput = document.getElementById("user-input").value.trim();
+      if (userInput) {
+        appendMessage(userInput, "user-message");
+        document.getElementById("user-input").value = "";
+        
+        if (!autoResponsesCompleted) {
+          initiateAutoResponses();
+        } else {
+          generateResponse(userInput);
+        }
+      }
+    }
+    
+    function initiateAutoResponses() {
+      const autoMessages = [
+        "Matrículas Abertas!",
+        "• Curso de Inteligência Artificial\n📈",
+        "• Catálogo\n📈 ",
+        "• Instagram - Plínio Fabrício\n🔗 <a href='https://www.instagram.com/' target='_blank'>https://www.instagram.com/</a>",
+        "• Instagram - Ia Designer Oficial\n🔗 <a href='https://www.instagram.com/ia.desiger.of' target='_blank'>https://www.instagram.com/ia.desiger.of</a>",
+        "• YouTube - Plínio Fabrício\n🔗 <a href='https://youtube.com/@pliniofabricio_' target='_blank'>https://youtube.com/@pliniofabricio_</a>",
+        "• Suporte - WhatsApp\n🔗 <a href='https://wa.me/5587999786261' target='_blank'>https://wa.me/5587999786261</a>",
+        "Bem-vindo ao curso de IA para empresas! Vamos explorar novas ferramentas e tendências.",
+        "O curso aborda temas como IA na Saúde, Educação, Finanças e Negócios.",
+        "Conheça nosso catálogo de cursos e ferramentas para impulsionar sua empresa.",
+        "Precisa de suporte?"
+        "Conheça nossa loja no Youtube!" 
+        "Entre em contato para mais informações!"
+      ];
+      
+      let index = 0;
+      function sendNextMessage() {
+        if (index < autoMessages.length) {
+          simulateTyping(() => {
+            appendMessage(autoMessages[index], "bot-message");
+            index++;
+            sendNextMessage();
+          });
+        } else {
+          autoResponsesCompleted = true;
+        }
+      }
+      sendNextMessage();
+    }
+
+    function generateResponse(input) {
+      let response = "No momento, não sou autorizada a dar informações específicas relacionadas a essa consulta. Entre em contato com o suporte para receber detalhes do Curso de Inteligência Artificial e outras ferramentas.";
+
+      simulateTyping(() => appendMessage(response, "bot-message"));
+    }
+
+    // Função para adicionar o play após a primeira interação do usuário
+    function addAudioPlayButton() {
+      const audioMessage = `
+        <div class="message bot-message">
+          <audio controls>
+            <source src="https://vocaroo.com/media_command.php?media=15k0g88Uus1N&command=download" type="audio/mp3">
+            Seu navegador não suporta o elemento de áudio.
+          </audio>
+        </div>
+      `;
+      appendMessage(audioMessage, "bot-message");
+    }
+
+    // Espera até a primeira interação do cliente para mostrar o áudio
+    let userFirstInteraction = false;
+    function sendMessage() {
+      const userInput = document.getElementById("user-input").value.trim();
+      if (userInput) {
+        appendMessage(userInput, "user-message");
+        document.getElementById("user-input").value = "";
+        
+        if (!autoResponsesCompleted) {
+          initiateAutoResponses();
+        } else {
+          generateResponse(userInput);
+        }
+
+        if (!userFirstInteraction) {
+          userFirstInteraction = true;
+          addAudioPlayButton();  // Adiciona o botão de play de áudio após a primeira interação
+        }
+      }
     }
   </script>
 </body>
