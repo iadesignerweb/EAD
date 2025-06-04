@@ -19,7 +19,7 @@
     .video-section { text-align: center; padding: 20px; background-color: #fafafa; }
     .video-section h3 { font-size: 1.2em; color: #333; }
     .audio-container { display: flex; align-items: center; margin: 10px 0; }
-    /* Responsividade */
+
     @media (max-width: 600px) {
         .chat-container { width: 100%; }
         .input-container { flex-direction: column; }
@@ -32,12 +32,12 @@
   <div class="chat-container" id="chat-container">
     <div class="bot-message message">Olá! Sou um assistente virtual. Como posso ajudar?</div>
   </div>
-  
+
   <div class="input-container">
     <input type="text" id="user-input" placeholder="Digite sua mensagem aqui...">
     <button onclick="sendMessage()">Enviar</button>
   </div>
-  
+
   <div class="video-section">
     <h3>Vídeo Demonstrativo</h3>
     <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ou5OB2roFRk?si=bN4ocqqVlCTEqOWR" 
@@ -46,10 +46,11 @@
   </div>
 
   <div class="footer">© 2024 Plinio Studio. Todos os direitos reservados.</div>
-  
+
   <script>
     const chatContainer = document.getElementById("chat-container");
     let autoResponsesCompleted = false;
+    let userFirstInteraction = false;
 
     function appendMessage(text, className) {
       const messageElement = document.createElement("div");
@@ -58,7 +59,7 @@
       chatContainer.appendChild(messageElement);
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
-    
+
     function simulateTyping(callback) {
       const typingIndicator = document.createElement("div");
       typingIndicator.className = "typing bot-message message";
@@ -69,40 +70,45 @@
       setTimeout(() => {
         typingIndicator.remove();
         callback();
-      }, 4000); // Intervalo de 3 segundos entre mensagens automáticas
+      }, 3000);
     }
-    
+
     function sendMessage() {
       const userInput = document.getElementById("user-input").value.trim();
       if (userInput) {
         appendMessage(userInput, "user-message");
         document.getElementById("user-input").value = "";
-        
+
         if (!autoResponsesCompleted) {
           initiateAutoResponses();
         } else {
           generateResponse(userInput);
         }
+
+        if (!userFirstInteraction) {
+          userFirstInteraction = true;
+          addAudioPlayButton();
+        }
       }
     }
-    
+
     function initiateAutoResponses() {
       const autoMessages = [
         "Matrículas Abertas!",
         "• Curso de Inteligência Artificial\n📈",
-        "• Catálogo\n📈 ",
-        "• Instagram - Plínio Fabrício\n🔗 <a href='https://www.instagram.com/' target='_blank'>https://www.instagram.com/</a>",
-        "• Instagram - Ia Designer Oficial\n🔗 <a href='https://www.instagram.com/ia.desiger.of' target='_blank'>https://www.instagram.com/ia.desiger.of</a>",
-        "• YouTube - Plínio Fabrício\n🔗 <a href='https://youtube.com/@pliniofabricio_' target='_blank'>https://youtube.com/@pliniofabricio_</a>",
-        "• Suporte - WhatsApp\n🔗 <a href='https://wa.me/5587999786261' target='_blank'>https://wa.me/5587999786261</a>",
+        "• Catálogo\n📈",
+        "• Instagram - Plínio Fabrício<br>🔗 <a href='https://www.instagram.com/' target='_blank'>https://www.instagram.com/</a>",
+        "• Instagram - Ia Designer Oficial<br>🔗 <a href='https://www.instagram.com/ia.desiger.of' target='_blank'>https://www.instagram.com/ia.desiger.of</a>",
+        "• YouTube - Plínio Fabrício<br>🔗 <a href='https://youtube.com/@pliniofabricio_' target='_blank'>https://youtube.com/@pliniofabricio_</a>",
+        "• Suporte - WhatsApp<br>🔗 <a href='https://wa.me/5587999786261' target='_blank'>https://wa.me/5587999786261</a>",
         "Bem-vindo ao curso de IA para empresas! Vamos explorar novas ferramentas e tendências.",
         "O curso aborda temas como IA na Saúde, Educação, Finanças e Negócios.",
         "Conheça nosso catálogo de cursos e ferramentas para impulsionar sua empresa.",
-        "Precisa de suporte?"
-        "Conheça nossa loja no Youtube!" 
+        "Precisa de suporte?",
+        "Conheça nossa loja no Youtube!",
         "Entre em contato para mais informações!"
       ];
-      
+
       let index = 0;
       function sendNextMessage() {
         if (index < autoMessages.length) {
@@ -119,12 +125,10 @@
     }
 
     function generateResponse(input) {
-      let response = "No momento, não sou autorizada a dar informações específicas relacionadas a essa consulta. Entre em contato com o suporte para receber detalhes do Curso de Inteligência Artificial e outras ferramentas.";
-
+      const response = "No momento, não sou autorizada a dar informações específicas relacionadas a essa consulta. Entre em contato com o suporte para receber detalhes do Curso de Inteligência Artificial e outras ferramentas.";
       simulateTyping(() => appendMessage(response, "bot-message"));
     }
 
-    // Função para adicionar o play após a primeira interação do usuário
     function addAudioPlayButton() {
       const audioMessage = `
         <div class="message bot-message">
@@ -135,27 +139,6 @@
         </div>
       `;
       appendMessage(audioMessage, "bot-message");
-    }
-
-    // Espera até a primeira interação do cliente para mostrar o áudio
-    let userFirstInteraction = false;
-    function sendMessage() {
-      const userInput = document.getElementById("user-input").value.trim();
-      if (userInput) {
-        appendMessage(userInput, "user-message");
-        document.getElementById("user-input").value = "";
-        
-        if (!autoResponsesCompleted) {
-          initiateAutoResponses();
-        } else {
-          generateResponse(userInput);
-        }
-
-        if (!userFirstInteraction) {
-          userFirstInteraction = true;
-          addAudioPlayButton();  // Adiciona o botão de play de áudio após a primeira interação
-        }
-      }
     }
   </script>
 </body>
