@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plinio Studio EAD - Seu Futuro Começa Aqui</title>
+    <title>Sua Escola - EAD - Seu Futuro Começa Aqui</title>
 
     <!-- SEO Meta Tags Embutidas (Não visíveis para o usuário) -->
-    <meta name="description" content="Plinio Studio: Transforme seu Negócio Online! Plataforma virtual EAD de sucesso. Oferecemos scripts de sites prontos, consultoria especializada e marketing digital para impulsionar sua presença online. Desenvolva seu site profissional, e-commerce, automação WhatsApp e mais.">
-    <meta name="keywords" content="SitesProntos, MarketingDigital, Ecommerce, DesenvolvimentoWeb, AutomaçãoWhatsApp, SEO, LojaOnline, SitePessoal, Streaming, PlinioStudio, EmpreendedorismoDigital, NegocioOnline, MarketingOnline, DesignGrafico, EdicaoDeVideo, FotografiaProfissional, SolucoesDigitais, ScriptsDeSites, PlataformaEAD, CursoEAD, AnimaEAD, EADBrasil">
-    <meta name="author" content="Plinio Studio">
-    <meta property="og:title" content="Plinio Studio EAD - Soluções Digitais Completas">
+    <meta name="description" content="Sua Escola EAD: Transforme seu Negócio Online! Plataforma virtual EAD de sucesso. Oferecemos scripts de sites prontos, consultoria especializada e marketing digital para impulsionar sua presença online. Desenvolva seu site profissional, e-commerce, automação WhatsApp e mais.">
+    <meta name="keywords" content="SitesProntos, MarketingDigital, Ecommerce, DesenvolvimentoWeb, AutomaçãoWhatsApp, SEO, LojaOnline, SitePessoal, Streaming, SuaEscolaEAD, EmpreendedorismoDigital, NegocioOnline, MarketingOnline, DesignGrafico, EdicaoDeVideo, FotografiaProfissional, SolucoesDigitais, ScriptsDeSites, PlataformaEAD, CursoEAD, IdentidadeVisual, ProducaoAudiovisual, InteligenciaArtificialConteudo">
+    <meta name="author" content="Sua Escola - EAD">
+    <meta property="og:title" content="Sua Escola - EAD - Soluções Digitais Completas">
     <meta property="og:description" content="Sua parceira para sites, marketing digital e desenvolvimento de apps. Construa seu sucesso online!">
-    <meta property="og:url" content="https://pliniostudio.com.br"> <!-- SUBSTITUA PELA SUA URL REAL -->
+    <meta property="og:url" content="https://instagram.com/pliniofabricio_"> <!-- SUBSTITUA PELA SUA URL REAL DO SITE -->
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Plinio Studio EAD - Soluções Digitais Completas">
+    <meta name="twitter:title" content="Sua Escola - EAD - Soluções Digitais Completas">
     <meta name="twitter:description" content="Sua parceira para sites, marketing digital e desenvolvimento de apps. Construa seu sucesso online!">
     <!-- Fim das SEO Meta Tags -->
 
@@ -26,7 +26,7 @@
         :root {
             /* Paleta de Cores Inspirada em EAD.BR Anima Educação */
             --primary-color: #612999; /* Roxo principal, inspirado na Anima */
-            --primary-light: #8E2DE2; /* Roxo mais claro */
+            --primary-light: #8E2DE2; /* Roxo mais claro (para gradientes leves) */
             --primary-dark: #4A00E0; /* Roxo mais escuro */
             --secondary-color: #007BFF; /* Azul para botões/destaque */
             --accent-color: #FFC107; /* Amarelo para detalhes (ocasional) */
@@ -99,13 +99,51 @@
             margin-right: 10px;
         }
 
+        /* Header Buttons */
+        .header-buttons {
+            display: flex; /* Visível por padrão em desktop */
+            gap: 15px;
+            margin-left: auto; /* Empurra para a direita, antes do hamburger */
+        }
+        .header-buttons .btn {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            border-radius: 8px;
+            box-shadow: none; /* Remove shadow for header buttons */
+        }
+        .header-buttons .btn-portal {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .header-buttons .btn-portal:hover {
+            background-color: var(--bg-neutral);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: none; /* No translateY for header buttons */
+            box-shadow: none;
+        }
+        .header-buttons .btn-inscricao {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            transition: background-color 0.3s;
+        }
+        .header-buttons .btn-inscricao:hover {
+            background-color: var(--primary-light);
+            transform: none; /* No translateY for header buttons */
+            box-shadow: none;
+        }
+
         .hamburger-menu {
-            display: none;
+            display: none; /* Escondido por padrão em desktop */
             flex-direction: column;
             cursor: pointer;
             padding: 8px;
             border-radius: var(--border-radius);
             transition: background-color var(--transition-speed);
+            margin-left: 15px; /* Espaço entre botões e hamburger */
         }
 
         .hamburger-menu:hover {
@@ -121,7 +159,19 @@
         }
 
         nav {
-            display: flex;
+            display: flex; /* Visível por padrão em desktop */
+            margin-left: 30px; /* Espaço entre logo e nav */
+            
+            /* Adicionado para transição suave em mobile */
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        nav.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: flex !important; /* IMPORTANTE: Força a exibição em mobile */
         }
 
         nav ul {
@@ -168,23 +218,16 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            display: none; /* Escondido por padrão, JavaScript gerencia a exibição */
         }
 
-        section:first-of-type {
-            opacity: 1; /* Hero section visível por padrão */
-            transform: translateY(0);
-        }
-
-        section.hidden {
-            display: none;
-        }
-
-        section:not(.hidden) {
+        section.visible { /* Classe para seção ativa/visível */
             opacity: 1;
             transform: translateY(0);
+            display: block; /* Visível quando a classe .visible é aplicada */
         }
-
-        .hero {
+        
+        .hero { /* Esta é a antiga seção 'home', agora intro/banner */
             background: linear-gradient(rgba(97, 41, 153, 0.8), rgba(97, 41, 153, 0.6)), url('https://source.unsplash.com/random/1600x900/?education,student,learning,university') no-repeat center center/cover;
             color: var(--light-text-color);
             text-align: center;
@@ -194,7 +237,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background-attachment: fixed; /* Efeito parallax sutil */
+            background-attachment: fixed;
         }
 
         .hero h1 {
@@ -228,7 +271,8 @@
             margin: 0 15px;
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border: none; /* Remover borda padrão */
+            border: none;
+            outline: none; /* Remove outline on focus */
         }
 
         .lottie-button-wrapper:hover {
@@ -244,7 +288,7 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.7; /* Lottie mais sutil */
+            opacity: 0.7;
         }
 
         .lottie-button-wrapper span {
@@ -279,10 +323,11 @@
             cursor: pointer;
             font-size: 1em;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            outline: none; /* Remove outline on focus */
         }
 
         .btn:hover {
-            background-color: #0056b3; /* Um pouco mais escuro */
+            background-color: #0056b3;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
@@ -291,7 +336,7 @@
             background-color: var(--primary-color);
         }
         .btn-primary-static:hover {
-            background-color: #4c207a;
+            background-color: var(--primary-light); /* Lighter on hover */
         }
         .btn-secondary-static {
             background-color: var(--secondary-color);
@@ -422,22 +467,29 @@
         }
         .advantage-item {
             background-color: var(--card-bg);
-            padding: 20px;
+            padding: 20px 20px 20px 45px; /* Ajuste o padding para o pseudo-elemento */
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             border-left: 5px solid var(--primary-color);
+            position: relative; /* Para posicionamento do pseudo-elemento */
             display: flex;
             align-items: center;
-            gap: 15px;
             transition: transform var(--transition-speed), border-color var(--transition-speed);
         }
         .advantage-item:hover {
             transform: translateX(5px);
             border-left-color: var(--secondary-color);
         }
-        .advantage-item .icon {
-            font-size: 2em;
-            color: var(--primary-color);
+        .advantage-item::before { /* Pseudo-elemento para o "ícone" sem emoji */
+            content: '•'; /* Um simples bullet, não um emoji */
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em; /* Tamanho ajustado */
+            color: var(--secondary-color); /* Cor de destaque */
+            font-weight: bold;
+            line-height: 1; /* Alinha o bullet */
         }
         .advantage-item p {
             font-size: 1.1em;
@@ -461,6 +513,11 @@
             text-align: center;
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
             border: 1px solid var(--border-color);
+            min-height: 220px; /* Garante altura mínima para os cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .service-card:hover {
@@ -478,6 +535,7 @@
         .service-card p {
             font-size: 1em;
             color: var(--text-color);
+            max-width: 90%; /* Ajuste para centralizar texto em cards */
         }
 
         /* Formulários e Inputs */
@@ -558,7 +616,7 @@
         /* Admin/User Dashboard */
         #admin-dashboard, #user-dashboard {
             padding: 60px 20px;
-            background-color: var(--bg-neutral); /* Fundo levemente diferente para dashboards */
+            background-color: var(--bg-neutral);
         }
 
         #admin-dashboard h2, #user-dashboard h2 {
@@ -625,6 +683,7 @@
             font-weight: 600;
             transition: background-color var(--transition-speed), transform var(--transition-speed);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            outline: none;
         }
 
         .action-buttons button:hover {
@@ -687,22 +746,22 @@
 
         /* Modal para Conteúdo do Curso */
         .modal {
-            display: none; /* Escondido por padrão */
-            position: fixed; /* Fica por cima de tudo */
-            z-index: 2000; /* Z-index alto */
+            display: none;
+            position: fixed;
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; /* Scroll se necessário */
-            background-color: rgba(0,0,0,0.6); /* Fundo semi-transparente */
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
             padding-top: 60px;
             animation: fadeIn 0.3s ease-out;
         }
 
         .modal-content {
             background-color: var(--card-bg);
-            margin: 5% auto; /* 5% do topo e centralizado */
+            margin: 5% auto;
             padding: 30px;
             border-radius: var(--border-radius);
             width: 90%;
@@ -739,6 +798,9 @@
         .modal-content .course-body {
             line-height: 1.8;
             color: #444;
+            max-height: 60vh; /* Limita altura para scroll interno */
+            overflow-y: auto; /* Adiciona scroll se conteúdo for grande */
+            padding-right: 10px; /* Espaço para scrollbar */
         }
         .modal-content .course-body iframe,
         .modal-content .course-body img {
@@ -764,7 +826,7 @@
             box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        /* Floating WhatsApp Button */
+        /* Floating WhatsApp Button (SVG Icon) */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -773,21 +835,25 @@
             right: 30px;
             background-color: #25d366;
             color: #FFF;
-            border-radius: 50px;
+            border-radius: 50%; /* Changed to 50% for round shape */
             text-align: center;
-            font-size: 30px;
-            line-height: 60px;
+            line-height: 60px; /* Centering content vertically */
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s;
+            display: flex; /* Use flex for SVG centering */
+            align-items: center;
+            justify-content: center;
         }
         .whatsapp-float:hover {
             transform: scale(1.1);
+            background-color: #1da851; /* Slightly darker green on hover */
         }
-        /* Icone WhatsApp - pode ser um SVG ou FontAwesome */
-        .whatsapp-float::before {
-            content: '💬'; /* Um emoji simples para o WhatsApp */
-            font-size: 1em;
+        .whatsapp-float svg { /* Style for the embedded SVG */
+            fill: white;
+            width: 35px; /* Adjust size of the SVG icon */
+            height: 35px;
+            vertical-align: middle;
         }
 
         /* Keyframe Animations */
@@ -802,35 +868,14 @@
 
         /* Responsividade */
         @media (max-width: 992px) {
-            .content-box {
-                flex-direction: column;
-                text-align: center;
+            .header-buttons {
+                display: none; /* Hide buttons on medium screens, they will be in the nav for mobile */
             }
-            .content-box.reversed {
-                flex-direction: column; /* Também coluna no mobile */
+            header .container {
+                justify-content: space-between;
             }
-            .content-box .image-content {
-                flex: 0 0 100%;
-                max-width: 100%;
-                margin-top: 20px;
-            }
-            .advantage-list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 1.7em;
-            }
-
-            .hamburger-menu {
-                display: flex;
-            }
-
             nav {
-                display: none;
-                flex-direction: column;
+                display: none; /* Escondido por padrão, só aparece com .active */
                 position: absolute;
                 top: 70px; /* Altura do header */
                 left: 0;
@@ -839,16 +884,50 @@
                 box-shadow: var(--box-shadow);
                 padding: 10px 0;
                 border-top: 1px solid var(--border-color);
+                flex-direction: column; /* Stack items vertically */
             }
-
             nav.active {
-                display: flex;
+                display: flex !important; /* IMPORTANTE: Força a exibição em mobile */
+                opacity: 1;
+                transform: translateY(0);
             }
-
             nav ul {
                 flex-direction: column;
                 gap: 0;
                 width: 100%;
+            }
+            /* Adiciona os botões de cabeçalho dentro do menu hamburger em mobile */
+            nav ul li.mobile-only {
+                display: block;
+                border-bottom: 1px solid var(--border-color);
+                padding: 0;
+            }
+            nav ul li.mobile-only:last-of-type {
+                border-bottom: none;
+            }
+            nav ul li.mobile-only .btn {
+                display: block;
+                width: calc(100% - 40px); /* Ajusta largura para padding do container */
+                margin: 10px 20px;
+                text-align: center;
+                box-shadow: none;
+                transform: none;
+            }
+            nav ul li.mobile-only .btn-portal {
+                border: 1px solid var(--primary-color);
+                color: var(--primary-color);
+                background-color: transparent;
+            }
+            nav ul li.mobile-only .btn-portal:hover {
+                background-color: var(--primary-color);
+                color: var(--light-text-color);
+            }
+            nav ul li.mobile-only .btn-inscricao {
+                background-color: var(--primary-color);
+                color: var(--light-text-color);
+            }
+            nav ul li.mobile-only .btn-inscricao:hover {
+                background-color: var(--primary-light);
             }
 
             nav ul li {
@@ -873,6 +952,32 @@
             nav ul li a::after {
                 left: 50%;
                 transform: translateX(-50%);
+            }
+            .hamburger-menu {
+                display: flex; /* Show hamburger menu */
+                margin-left: 0; /* No extra margin */
+            }
+
+            .content-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            .content-box.reversed {
+                flex-direction: column;
+            }
+            .content-box .image-content {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-top: 20px;
+            }
+            .advantage-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.7em;
             }
 
             .hero {
@@ -940,6 +1045,10 @@
                 bottom: 20px;
                 right: 20px;
             }
+            .whatsapp-float svg {
+                width: 30px;
+                height: 30px;
+            }
             .modal-content h3 {
                 font-size: 1.5em;
             }
@@ -954,35 +1063,91 @@
 <body>
     <header>
         <div class="container">
-            <a href="#" class="logo" onclick="showSection('home'); return false;">
-                <!-- Você pode adicionar uma imagem de logo aqui, por exemplo: <img src="logo.png" alt="Plinio Studio Logo"> -->
-                Plinio Studio
+            <a href="#" class="logo" onclick="showSection('servicos'); return false;">
+                <!-- Você pode adicionar uma imagem de logo aqui, por exemplo: <img src="logo.png" alt="Sua Logo"> -->
+                Sua Escola - EAD
             </a>
-            <div class="hamburger-menu" id="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+            
             <nav id="main-nav">
                 <ul>
-                    <li><a href="#" onclick="showSection('home'); return false;">Início</a></li>
+                    <!-- Botões para mobile, duplicados do header-buttons -->
+                    <li class="mobile-only"><button class="btn btn-portal" onclick="showSection('user-login'); return false;">Portal do Aluno</button></li>
+                    <li class="mobile-only"><button class="btn btn-inscricao" onclick="showSection('contatos'); return false;">Inscreva-se</button></li>
+                    <!-- Fim dos botões mobile -->
+
+                    <li><a href="#" onclick="showSection('servicos'); return false;">Serviços</a></li> <!-- "Serviços" como "Início" -->
                     <li><a href="#" onclick="showSection('quem-somos'); return false;">Quem Somos</a></li>
-                    <li><a href="#" onclick="showSection('servicos'); return false;">Serviços</a></li>
+                    <li><a href="#" onclick="showSection('como-fazer'); return false;">Como Estudar</a></li>
+                    <li><a href="#" onclick="showSection('vantagens'); return false;">Vantagens</a></li>
                     <li><a href="#" onclick="showSection('precos'); return false;">Preços</a></li>
                     <li><a href="#" onclick="showSection('contatos'); return false;">Contatos</a></li>
                     <li><a href="#" onclick="showSection('admin-login'); return false;">Admin</a></li>
                     <li><a href="#" onclick="showSection('user-login'); return false;">Área do Aluno</a></li>
                 </ul>
             </nav>
+
+            <div class="header-buttons"> <!-- Botões visíveis em desktop -->
+                <button class="btn btn-portal" onclick="showSection('user-login'); return false;">Portal do Aluno</button>
+                <button class="btn btn-inscricao" onclick="showSection('contatos'); return false;">Inscreva-se</button>
+            </div>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Home / Hero Section -->
-        <section id="home">
+        <!-- Serviços Section - AGORA É A PÁGINA INICIAL -->
+        <section id="servicos" class="visible">
             <div class="container">
-                <h1>EAD.br: faça sua graduação e pós online</h1>
-                <p>Estude nas melhores instituições de ensino do país com a flexibilidade e qualidade que só o Plinio Studio EAD oferece.</p>
+                <h2>Nossos Serviços Digitais</h2>
+                <p style="text-align: center; font-size: 1.3em; max-width: 900px; margin: 0 auto 50px; line-height: 1.5; color: #555;">
+                    Explore um universo de soluções digitais completas. Desenvolvemos ferramentas e estratégias que impulsionam o seu projeto, desde a criação da sua marca até a automação de processos e a otimização da sua presença online.
+                </p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Sites Prontos</h3>
+                        <p>Desenvolvemos soluções web completas: Lojas virtuais, automação com WhatsApp, sites pessoais, plataformas de streaming e escolas EAD. Temos o script ideal para suas necessidades.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Marketing Digital</h3>
+                        <p>Implementamos estratégias de SEO para rankeamento no Google, gestão de mídias sociais e campanhas digitais para aumentar sua visibilidade, engajamento e resultados online.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Desenvolvimento de Apps</h3>
+                        <p>Transformamos suas ideias em aplicativos móveis funcionais e intuitivos, para Android e iOS, garantindo uma experiência de usuário excepcional.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Design Gráfico e Identidade Visual</h3>
+                        <p>Criamos logotipos impactantes, identidade visual completa, e artes para redes sociais e materiais de marketing, construindo uma marca forte e memorável.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Produção Audiovisual</h3>
+                        <p>Da concepção à edição final, criamos vídeos profissionais, motion graphics e conteúdo multimídia de alta qualidade para marketing, cursos EAD e eventos.</p>
+                    </div>
+                     <div class="service-card">
+                        <h3>Inteligência Artificial (IA) para Conteúdo</h3>
+                        <p>Aplicamos soluções de IA para otimizar a criação, geração e personalização de conteúdo, impulsionando suas plataformas digitais com inovação.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Fotografia Profissional</h3>
+                        <p>Capturamos imagens de alta qualidade que valorizam seu negócio, produto ou evento, com retoque profissional que destaca a sua essência.</p>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 60px; font-size: 1.2em; font-weight: 500;">Chega de complicação! Faça o seu futuro acontecer AGORA.</p>
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="btn btn-primary-static" onclick="showSection('contatos'); return false;">Comece Seu Projeto</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Section (Antigo 'Home', agora uma intro mais geral) -->
+        <section id="hero-intro" class="hidden">
+            <div class="container">
+                <h1>Transforme seu Negócio Online!</h1>
+                <p>Sua Escola - EAD: A chave para o seu sucesso no mundo digital. Soluções completas para sua escola EAD, site pessoal, e-commerce e muito mais.</p>
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
                     <div class="lottie-button-wrapper btn-lottie-primary" onclick="showSection('servicos'); return false;">
                         <lottie-player
@@ -1002,7 +1167,7 @@
                             loop autoplay mode="normal"
                             style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"
                         ></lottie-player>
-                        <span>Inscreva-se Já!</span>
+                        <span>Inscreva-se Agora</span>
                     </div>
                 </div>
             </div>
@@ -1014,22 +1179,22 @@
                 <h2>Quem Somos</h2>
                 <div class="content-box">
                     <div class="text-content">
-                        <h3>Plinio Studio: Uma Plataforma Virtual EAD de Sucesso</h3>
-                        <p>Temos a solução! Oferecemos scripts de sites prontos para download, consultoria especializada e serviços de marketing digital para impulsionar sua presença online. Nossa missão é transformar seu negócio, seja você um empreendedor, uma escola EAD ou uma marca pessoal.</p>
+                        <h3>Sua Escola - EAD: Uma Plataforma Virtual de Sucesso</h3>
+                        <p>Temos a solução! Oferecemos scripts de sites prontos para download, consultoria especializada e serviços de marketing digital para impulsionar sua presença online. Nossa missão é transformar seu negócio, seja você um empreendedor, uma Escola EAD ou uma marca pessoal.</p>
                         <p>Seja para um site pessoal, e-commerce, gerador de imagens ou plataforma de streaming, nós te ajudamos a alcançar o próximo nível com inovação e eficiência.</p>
                     </div>
                     <div class="image-content">
-                        <img src="https://source.unsplash.com/random/500x350/?online-education,team" alt="Pessoas estudando online">
+                        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Banner%20Sua%20Escola.png" alt="Pessoas estudando online">
                     </div>
                 </div>
                 <div class="content-box reversed">
                     <div class="text-content">
                         <h3>Por que Estudar a Distância?</h3>
                         <p>Com a evolução da internet, o ensino EAD vem, a cada dia, ganhando mais campo. Isso porque os alunos têm maior facilidade ao incluir o curso em suas rotinas, não precisam se preocupar com a mobilidade e podem estudar em qualquer lugar do mundo.</p>
-                        <p>Com toda essa flexibilidade e avanços tecnológicos, você pode estudar em uma instituição de ensino com a qualidade do Plinio Studio EAD, realizar diversas atividades e aprender como se estivesse na sala de aula. Facilitando assim o aprendizado e conciliando com as atividades do dia a dia.</p>
+                        <p>Com toda essa flexibilidade e avanços tecnológicos, você pode estudar em uma instituição de ensino com a qualidade da Sua Escola - EAD, realizar diversas atividades e aprender como se estivesse na sala de aula. Facilitando assim o aprendizado e conciliando com as atividades do dia a dia.</p>
                     </div>
                     <div class="image-content">
-                        <img src="https://source.unsplash.com/random/500x350/?student-headphones,laptop" alt="Estudante com fones de ouvido e laptop">
+                        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Estudante%20EAD.png" alt="Estudante com fones de ouvido e laptop">
                     </div>
                 </div>
             </div>
@@ -1043,32 +1208,32 @@
                     <div class="step-card">
                         <div class="step-number">1</div>
                         <h4>Escolha seu curso e Instituição</h4>
-                        <p>Clique aqui e escolha entre centenas de opções de graduações e pós em diversas instituições diferentes.</p>
+                        <p>Explore nossa vasta gama de opções de graduações e pós, e encontre o curso que melhor se encaixa em seus objetivos de carreira e vida.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">2</div>
                         <h4>Preencha o formulário</h4>
-                        <p>No site da instituição escolhida, informe o curso de interesse e seus dados pessoais.</p>
+                        <p>Em nosso site, informe o curso de seu interesse e preencha seus dados pessoais de forma simples e rápida.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">3</div>
                         <h4>Escolha a forma de ingresso</h4>
-                        <p>Disponibilizamos diversas formas de entrada, escolha a que mais combina com você.</p>
+                        <p>Oferecemos diversas formas de entrada para facilitar seu acesso à educação. Escolha a que mais combina com você.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">4</div>
                         <h4>Processo de seleção</h4>
-                        <p>Realize as atividades necessárias de acordo com a forma de ingresso escolhida.</p>
+                        <p>Realize as atividades necessárias para o processo de seleção, conforme a forma de ingresso que você escolheu.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">5</div>
                         <h4>Aguarde a aprovação</h4>
-                        <p>Nosso time entrará em contato com mais informações sobre o seu processo.</p>
+                        <p>Nosso time entrará em contato com você em breve, fornecendo mais informações sobre seu processo de aprovação.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">6</div>
                         <h4>Faça sua matrícula</h4>
-                        <p>Após a aprovação, realize a matrícula e garanta a sua vaga.</p>
+                        <p>Após ser aprovado, finalize sua matrícula para garantir sua vaga e iniciar sua jornada de aprendizado conosco.</p>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 50px;">
@@ -1077,59 +1242,26 @@
             </div>
         </section>
 
-        <!-- Vantagens de Estudar no Plinio Studio EAD Section -->
+        <!-- Vantagens de Estudar na Sua Escola EAD Section -->
         <section id="vantagens" class="hidden">
             <div class="container">
-                <h2>Conheça as vantagens de estudar no Plinio Studio EAD</h2>
+                <h2>Conheça as vantagens de estudar na Sua Escola - EAD</h2>
                 <p style="text-align: center; font-size: 1.15em; max-width: 900px; margin: 0 auto 30px;">
-                    O Plinio Studio EAD conta com inovações focadas em garantir sempre o melhor ensino em cursos superiores. Independentemente se você se tem interesse em realizar uma graduação, MBA ou pós, oferecemos conteúdos de alta qualidade. Além disso, você conta com o auxílio de professores e tutores qualificados com vasta experiência acadêmica.
+                    A Sua Escola - EAD conta com inovações focadas em garantir sempre o melhor ensino em cursos superiores. Independentemente se você tem interesse em realizar uma graduação, MBA ou pós, oferecemos conteúdos de alta qualidade. Além disso, você conta com o auxílio de professores e tutores qualificados com vasta experiência acadêmica.
                 </p>
                 <div class="advantage-list">
                     <div class="advantage-item">
-                        <span class="icon">💻</span> <p>Alta qualidade das aulas, que são pré-gravadas e pós-produzidas.</p>
+                        <p>Alta qualidade das aulas, que são pré-gravadas e pós-produzidas, garantindo excelência no aprendizado.</p>
                     </div>
                     <div class="advantage-item">
-                        <span class="icon">🌐</span> <p>Possibilidade de estudar de qualquer lugar, com acesso à internet.</p>
+                        <p>Possibilidade de estudar de qualquer lugar, com acesso à internet, proporcionando total flexibilidade em seus horários.</p>
                     </div>
                     <div class="advantage-item">
-                        <span class="icon">✍️</span> <p>Grande diversidade de exercícios online para estudar e praticar.</p>
+                        <p>Grande diversidade de exercícios online para estudar e praticar, consolidando seu conhecimento de forma eficaz.</p>
                     </div>
                     <div class="advantage-item">
-                        <span class="icon">⏰</span> <p>Menor investimento de tempo, sem a necessidade de ir ao campus presencialmente.</p>
+                        <p>Menor investimento de tempo, sem a necessidade de deslocamento ao campus presencialmente, otimizando sua rotina.</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Serviços Section -->
-        <section id="servicos" class="hidden">
-            <div class="container">
-                <h2>Nossos Serviços Digitais</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Sites Prontos</h3>
-                        <p>Loja, Automação WhatsApp, Pessoal, Streaming, Escolas EAD e mais! Soluções digitais completas para todas as suas necessidades.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Marketing Digital</h3>
-                        <p>Estratégias de SEO (Search Engine Optimization) e Gestão de Mídias Sociais para aumentar sua visibilidade e engajamento online.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Desenvolvimento de Apps</h3>
-                        <p>Transformamos suas ideias em aplicativos móveis funcionais e intuitivos, para Android e iOS.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Design Gráfico & Edição de Vídeo</h3>
-                        <p>Criação de identidade visual, materiais gráficos impactantes e edição de vídeos profissionais para sua marca.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Fotografia Profissional</h3>
-                        <p>Imagens de alta qualidade que capturam a essência do seu negócio, produto ou evento.</p>
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: 60px; font-size: 1.2em; font-weight: 500;">Chega de complicação! Faça o seu futuro acontecer AGORA.</p>
-                <div style="text-align: center; margin-top: 40px;">
-                    <button class="btn btn-primary-static" onclick="showSection('contatos'); return false;">Comece Seu Projeto</button>
                 </div>
             </div>
         </section>
@@ -1199,6 +1331,15 @@
                 <div id="admin-dashboard-content">
                     <p style="font-size: 1.1em; margin-bottom: 30px;">Bem-vindo, Administrador! Gerencie alunos e cursos abaixo.</p>
 
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                        <button class="btn btn-secondary-static" onclick="exportData()">Exportar Dados (Backup)</button>
+                        <div>
+                            <input type="file" id="import-file-input" accept=".json" style="display: none;">
+                            <button class="btn btn-primary-static" onclick="document.getElementById('import-file-input').click()">Importar Dados (Restaurar)</button>
+                            <span id="import-status" style="margin-left: 10px; color: #6c757d;"></span>
+                        </div>
+                    </div>
+
                     <h3>Cadastrar Novo Curso</h3>
                     <form id="add-course-form">
                         <div class="form-group">
@@ -1267,7 +1408,7 @@
                     </table>
                 </div>
                 <div style="text-align: center; margin-top: 40px;">
-                    <button class="btn btn-primary-static" onclick="showSection('home'); return false;">Sair do Admin</button>
+                    <button class="btn btn-primary-static" onclick="showSection('servicos'); return false;">Sair do Admin</button>
                 </div>
             </div>
         </section>
@@ -1297,12 +1438,11 @@
 
                 <h3 style="margin-top: 50px; text-align: center; color: var(--primary-color); font-size: 2em; border-bottom: 2px solid var(--border-color); padding-bottom: 15px;">Cursos Disponíveis</h3>
                 <div id="available-courses-list" class="course-cards-grid">
-                    <!-- Cursos serão carregados aqui -->
-                    <p style="grid-column: 1 / -1; text-align: center; color: #6c757d;">Nenhum curso disponível ainda. Entre em contato com o administrador.</p>
+                    <p style="grid-column: 1 / -1; text-align: center; color: #6c757d; padding: 30px;">Nenhum curso disponível ainda. Entre em contato com o administrador.</p>
                 </div>
 
                 <div style="text-align: center; margin-top: 40px;">
-                    <button class="btn btn-primary-static" onclick="showSection('home'); return false;">Sair</button>
+                    <button class="btn btn-primary-static" onclick="showSection('servicos'); return false;">Sair</button>
                 </div>
             </div>
         </section>
@@ -1319,12 +1459,16 @@
         </div>
     </div>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/5587999786261" class="whatsapp-float" target="_blank" title="Fale Conosco no WhatsApp"></a>
+    <!-- Floating WhatsApp Button (SVG Icon) -->
+    <a href="https://wa.me/5587999786261" class="whatsapp-float" target="_blank" title="Fale Conosco no WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.04 2C6.53 2 2.05 6.48 2.05 12s4.48 10 9.99 10c1.77 0 3.48-.48 4.96-1.42l-1.48-5.38 5.48-1.44c1.47.8 3.16 1.23 4.44 1.23h.01c5.46 0 9.91-4.45 9.91-9.91S17.51 2 12.04 2zM12.04 3.62c4.58 0 8.29 3.71 8.29 8.29 0 4.58-3.71 8.29-8.29 8.29-.91 0-1.83-.16-2.65-.47l-.19-.09-1.92.5-1.95-.51-.18-.08c-.83-.37-1.48-.79-2.03-1.48l-1.35-1.74c-.58-1.55-.89-3.2-.89-4.87 0-4.58 3.71-8.29 8.29-8.29zm0 2.58c-3.1 0-5.61 2.51-5.61 5.61 0 1.25.41 2.45 1.15 3.42l.06.07.16.2.22.28c.49.63 1.09 1.25 1.76 1.71l.24.16.29.18.23.14c.78.48 1.62.74 2.5.74h.01c3.1 0 5.61-2.51 5.61-5.61 0-3.1-2.51-5.61-5.61-5.61zm2.3 2.15l-.1-.06c-.45-.26-.96-.4-1.48-.4-.95 0-1.72.77-1.72 1.72s.77 1.72 1.72 1.72c.52 0 1.03-.14 1.48-.4l.1-.06.39-.24c.48-.29.83-.49 1.1-.64.1-.06.19-.13.29-.18.17-.1.35-.2.53-.2.3 0 .58.12.79.33.22.22.33.5.33.79 0 .28-.11.55-.33.77l-.27.27-.47.46-.3.29-.18.17-.1.1c-.24.23-.46.46-.7.68l-.13.12-.1.1-.38.38c-.2.2-.42.3-.65.3-.28 0-.54-.11-.75-.3l-.15-.14c-.6-.56-1.38-.85-2.22-.85-.84 0-1.62.29-2.22.85l-.15.14c-.21.19-.48.3-.75.3-.23 0-.45-.1-.65-.3l-.38-.38-.1-.1-.13-.12c-.24-.23-.46-.46-.7-.68l-.1-.1-.18-.17-.3-.29-.47-.46-.27-.27c-.22-.22-.33-.49-.33-.77 0-.29.11-.57.33-.79.21-.21.49-.33.79-.33.19 0 .36.09.53.2.1.05.2.12.29.18.27.15.62.35 1.1.64l.39.24z"></path>
+        </svg>
+    </a>
 
     <footer>
         <div class="container">
-            <p>&copy; Copyright 2025 - Plinio Studio</p>
+            <p>&copy; Copyright 2025 - Sua Escola - EAD</p>
         </div>
     </footer>
 
@@ -1336,12 +1480,10 @@
         const LOCAL_STORAGE_STUDENTS_KEY = "EAD_STUDENTS";
         const LOCAL_STORAGE_COURSES_KEY = "EAD_COURSES";
 
-        let students = []; // Array para armazenar os dados dos alunos
-        let courses = []; // Array para armazenar os dados dos cursos
+        let students = [];
+        let courses = [];
 
         // --- Funções de Utilitário ---
-
-        // Carrega alunos e cursos do localStorage
         function loadData() {
             try {
                 const studentsData = localStorage.getItem(LOCAL_STORAGE_STUDENTS_KEY);
@@ -1350,24 +1492,22 @@
                 courses = coursesData ? JSON.parse(coursesData) : [];
             } catch (e) {
                 console.error("Erro ao carregar dados do localStorage:", e);
-                alert("Erro ao carregar dados. Seu navegador pode estar com o armazenamento cheio ou desativado.");
+                // Removido o alert aqui para não incomodar o usuário na carga inicial
                 students = [];
                 courses = [];
             }
         }
 
-        // Salva alunos e cursos no localStorage
         function saveData() {
             try {
                 localStorage.setItem(LOCAL_STORAGE_STUDENTS_KEY, JSON.stringify(students));
                 localStorage.setItem(LOCAL_STORAGE_COURSES_KEY, JSON.stringify(courses));
             } catch (e) {
                 console.error("Erro ao salvar dados no localStorage:", e);
-                alert("Erro ao salvar dados. Seu navegador pode estar com o armazenamento cheio ou desativado.");
+                alert("Erro ao salvar dados. Seu navegador pode estar com o armazenamento cheio ou desativado. Por favor, verifique as configurações do navegador ou exporte seus dados para um backup manual.");
             }
         }
 
-        // Gera um ID único simples
         function generateUniqueId() {
             const timestamp = Date.now().toString(36);
             const random = Math.random().toString(36).substr(2, 5);
@@ -1376,26 +1516,38 @@
 
         // Exibe uma seção e esconde as outras com transição
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('section');
+            console.log(`Tentando exibir seção: ${sectionId}`); // Debugging
+            const sections = document.querySelectorAll('main section'); // Seleciona apenas seções dentro de <main>
             sections.forEach(sec => {
-                if (!sec.classList.contains('hidden')) {
-                    sec.classList.add('hidden');
+                if (sec.id === sectionId) {
+                    if (!sec.classList.contains('visible')) {
+                        sec.style.display = 'block'; // Garante que o elemento esteja visível antes da transição de entrada
+                        setTimeout(() => {
+                            sec.classList.remove('hidden');
+                            sec.classList.add('visible');
+                        }, 50); // Pequeno delay para garantir que o display: block seja processado
+                    }
+                } else {
+                    if (sec.classList.contains('visible')) {
+                        sec.classList.remove('visible');
+                        sec.classList.add('hidden');
+                        sec.addEventListener('transitionend', function handler() {
+                            if (sec.classList.contains('hidden')) {
+                                sec.style.display = 'none';
+                            }
+                            sec.removeEventListener('transitionend', handler);
+                        }, { once: true });
+                    } else {
+                        sec.style.display = 'none'; // Esconde imediatamente se já estava hidden
+                    }
                 }
             });
-
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                setTimeout(() => {
-                    targetSection.classList.remove('hidden');
-                }, 50);
-            }
 
             const mainNav = document.getElementById('main-nav');
             if (mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
             }
 
-            // Ações específicas para dashboards
             if (sectionId === 'admin-dashboard') {
                 renderStudentTable();
                 renderCourseTable();
@@ -1423,24 +1575,50 @@
         document.addEventListener('DOMContentLoaded', () => {
             const hamburgerMenu = document.getElementById('hamburger-menu');
             const mainNav = document.getElementById('main-nav');
+            const headerButtons = document.querySelector('.header-buttons');
+            const importFileInput = document.getElementById('import-file-input');
 
             hamburgerMenu.addEventListener('click', () => {
+                console.log("Hamburger clicked!"); // Debugging
                 mainNav.classList.toggle('active');
             });
 
             loadData();
-            showSection('home');
+            showSection('servicos'); // Defina "Serviços" como a página inicial
 
-            // Prevenir comportamento padrão de forms
             document.querySelectorAll('form').forEach(form => {
                 form.addEventListener('submit', (e) => e.preventDefault());
             });
 
-            document.querySelectorAll('#main-nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    document.getElementById('main-nav').classList.remove('active');
+            document.querySelectorAll('#main-nav a, #main-nav .btn').forEach(element => {
+                element.addEventListener('click', () => {
+                    if (window.innerWidth <= 992) {
+                        document.getElementById('main-nav').classList.remove('active');
+                    }
                 });
             });
+
+            function setNavVisibility() {
+                if (window.innerWidth > 992) {
+                    mainNav.style.display = 'flex'; // Desktop: nav sempre visível como flex
+                    hamburgerMenu.style.display = 'none';
+                    headerButtons.style.display = 'flex';
+                    mainNav.classList.remove('active'); // Garante que o menu mobile esteja desativado no desktop
+                    document.querySelectorAll('nav ul li.mobile-only').forEach(li => li.style.display = 'none');
+                } else {
+                    mainNav.style.display = 'none'; // Mobile: nav hidden por padrão, controlado por .active
+                    hamburgerMenu.style.display = 'flex';
+                    headerButtons.style.display = 'none';
+                    document.querySelectorAll('nav ul li.mobile-only').forEach(li => li.style.display = 'block');
+                }
+            }
+
+            setNavVisibility(); // Executa na carga inicial
+            window.addEventListener('resize', setNavVisibility); // Executa no redimensionamento
+
+            if (importFileInput) {
+                importFileInput.addEventListener('change', importData);
+            }
         });
 
         // --- Lógica da Seção Pública (Inscreva-se) ---
@@ -1480,8 +1658,6 @@
         }
 
         // --- Lógica do Dashboard do Administrador ---
-
-        // Renderiza a tabela de alunos
         function renderStudentTable() {
             const tableBody = document.querySelector('#student-list-table tbody');
             if (!tableBody) return;
@@ -1510,7 +1686,7 @@
                 `;
             });
 
-            tableBody.onclick = (event) => { // Usar onclick para evitar múltiplos listeners em `renderStudentTable`
+            tableBody.onclick = (event) => {
                 const target = event.target;
                 if (target.tagName === 'BUTTON') {
                     const studentId = target.dataset.id;
@@ -1525,7 +1701,6 @@
             };
         }
 
-        // Adicionar novo aluno via Admin Dashboard
         const addStudentForm = document.getElementById('add-student-form');
         if (addStudentForm) {
             addStudentForm.addEventListener('submit', (event) => {
@@ -1554,7 +1729,6 @@
             });
         }
 
-        // Alterna o status do aluno (Ativar/Bloquear)
         function toggleStudentStatus(id) {
             const studentIndex = students.findIndex(s => s.id === id);
             if (studentIndex > -1) {
@@ -1566,7 +1740,6 @@
             }
         }
 
-        // Exclui um aluno
         function deleteStudent(id) {
             if (confirm('Tem certeza que deseja excluir este aluno? Esta ação é irreversível.')) {
                 students = students.filter(s => s.id !== id);
@@ -1577,8 +1750,6 @@
         }
 
         // --- Lógica de Gerenciamento de Cursos (Admin) ---
-
-        // Renderiza a tabela de cursos
         function renderCourseTable() {
             const tableBody = document.querySelector('#course-list-table tbody');
             if (!tableBody) return;
@@ -1618,7 +1789,6 @@
             };
         }
 
-        // Adicionar novo curso via Admin Dashboard
         const addCourseForm = document.getElementById('add-course-form');
         if (addCourseForm) {
             addCourseForm.addEventListener('submit', (event) => {
@@ -1646,13 +1816,12 @@
             });
         }
 
-        // Editar curso (implementação simples com prompt para fins de exemplo)
         function editCourse(id) {
             const courseIndex = courses.findIndex(c => c.id === id);
             if (courseIndex > -1) {
                 const course = courses[courseIndex];
                 const newTitle = prompt(`Editar título do curso "${course.title}":`, course.title);
-                if (newTitle === null) return; // Cancelado
+                if (newTitle === null) return;
 
                 const newDescription = prompt(`Editar descrição do curso "${course.title}":`, course.description);
                 if (newDescription === null) return;
@@ -1669,7 +1838,6 @@
             }
         }
 
-        // Excluir curso
         function deleteCourse(id) {
             if (confirm('Tem certeza que deseja excluir este curso? Esta ação é irreversível.')) {
                 courses = courses.filter(c => c.id !== id);
@@ -1677,6 +1845,77 @@
                 renderCourseTable();
                 alert('Curso excluído com sucesso.');
             }
+        }
+
+        // --- Lógica de Backup/Restauração de Dados ---
+        function exportData() {
+            const dataToExport = {
+                students: students,
+                courses: courses
+            };
+            const jsonString = JSON.stringify(dataToExport, null, 2); // Pretty print JSON
+
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            const date = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+            a.download = `ead_backup_${date}.json`;
+            document.body.appendChild(a); // Necessário para Firefox
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            alert('Dados exportados com sucesso!');
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            const importStatus = document.getElementById('import-status');
+            importStatus.textContent = ''; // Limpa status anterior
+
+            if (!file) {
+                importStatus.textContent = 'Nenhum arquivo selecionado.';
+                return;
+            }
+
+            if (file.type !== 'application/json') {
+                importStatus.textContent = 'Por favor, selecione um arquivo JSON válido.';
+                alert('Formato de arquivo inválido. Por favor, selecione um arquivo JSON.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+
+                    // Validação básica da estrutura
+                    if (!Array.isArray(importedData.students) || !Array.isArray(importedData.courses)) {
+                        throw new Error("Estrutura do arquivo JSON inválida. Deve conter 'students' e 'courses'.");
+                    }
+
+                    if (confirm('Importar estes dados substituirá TODOS os dados atuais de alunos e cursos. Deseja continuar?')) {
+                        students = importedData.students;
+                        courses = importedData.courses;
+                        saveData(); // Salva os dados importados no localStorage
+                        renderStudentTable(); // Atualiza a UI
+                        renderCourseTable(); // Atualiza a UI
+                        showSection('admin-dashboard'); // Volta para o dashboard
+                        importStatus.textContent = 'Dados importados com sucesso!';
+                        alert('Dados importados com sucesso!');
+                    } else {
+                         importStatus.textContent = 'Importação cancelada.';
+                    }
+                } catch (error) {
+                    console.error("Erro ao importar dados:", error);
+                    importStatus.textContent = `Erro: ${error.message}`;
+                    alert(`Erro ao importar dados: ${error.message}`);
+                } finally {
+                    event.target.value = ''; // Limpa o input de arquivo para permitir re-seleção do mesmo arquivo
+                }
+            };
+            reader.readAsText(file);
         }
 
         // --- Lógica de Login do Usuário (Aluno) ---
@@ -1710,7 +1949,7 @@
             const coursesListDiv = document.getElementById('available-courses-list');
             if (!coursesListDiv) return;
 
-            coursesListDiv.innerHTML = ''; // Limpa a lista
+            coursesListDiv.innerHTML = '';
 
             if (courses.length === 0) {
                 coursesListDiv.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #6c757d; padding: 30px;">Nenhum curso disponível ainda. Entre em contato com o administrador.</p>';
@@ -1738,7 +1977,7 @@
             const course = courses.find(c => c.id === courseId);
             if (course) {
                 modalCourseTitle.textContent = course.title;
-                modalCourseBody.innerHTML = course.content; // Renderiza o HTML do conteúdo
+                modalCourseBody.innerHTML = course.content;
                 courseContentModal.style.display = 'block';
             } else {
                 alert('Curso não encontrado.');
@@ -1751,7 +1990,6 @@
             modalCourseBody.innerHTML = '';
         }
 
-        // Fecha o modal se clicar fora dele
         window.onclick = function(event) {
             if (event.target == courseContentModal) {
                 closeCourseModal();
@@ -1760,7 +1998,7 @@
 
         // --- Console Warnings ---
         console.warn('ATENÇÃO: Este site utiliza localStorage para persistência de dados. Os dados são salvos APENAS no navegador atual do administrador. Limpar o cache/dados do navegador ou usar outro dispositivo resultará na perda dos dados. Esta não é uma solução recomendada para produção real ou para múltiplos administradores.');
-        console.warn('A senha do administrador ("ead2025") está embutida no código JS por se tratar de uma solução standalone de arquivo único, não sendo segura para ambientes de produção.');
+        console.warn('A senha do administrador ("ead2025") está embutida no código JS por se tratar de uma solução standalone de arquivo único, não sendo segura para ambientes de produção. Para segurança e escalabilidade, é altamente recomendado usar um backend com banco de dados e autenticação segura.');
     </script>
 </body>
 </html>
