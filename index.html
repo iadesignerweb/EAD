@@ -11,7 +11,7 @@
     <meta name="author" content="Sua Escola - EAD">
     <meta property="og:title" content="Sua Escola - EAD - Soluções Digitais Completas">
     <meta property="og:description" content="Sua parceira para sites, marketing digital e desenvolvimento de apps. Construa seu sucesso online!">
-    <meta property="og:url" content="https://suaescola.com.br"> <!-- SUBSTITUA PELA SUA URL REAL DO SITE -->
+    <meta property="og:url" content="https://instagram.com/pliniofabricio_"> <!-- SUBSTITUA PELA SUA URL REAL DO SITE -->
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sua Escola - EAD - Soluções Digitais Completas">
@@ -36,11 +36,11 @@
             --bg-neutral: #f8f8f8; /* Fundo levemente cinza para algumas áreas */
             --bg-dark: #212529; /* Fundo escuro para rodapé/contrastes */
             --card-bg: #ffffff; /* Fundo de card */
+            --border-color: #eeeeee; /* Cor de borda clara */
+            --font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             --border-radius: 12px;
             --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             --transition-speed: 0.4s ease-in-out;
-            --border-color: #eeeeee; /* Cor de borda clara */
-            --font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
 
         * {
@@ -99,18 +99,18 @@
             margin-right: 10px;
         }
 
-        /* Header Buttons (Desktop only initially) */
+        /* Header Buttons */
         .header-buttons {
-            display: flex; /* Visível por padrão em desktop, manipulado por JS/media query */
+            display: flex; /* Visível por padrão em desktop */
             gap: 15px;
-            margin-left: auto;
+            margin-left: auto; /* Empurra para a direita, antes do hamburger */
         }
         .header-buttons .btn {
             padding: 10px 20px;
             font-size: 0.9em;
             font-weight: 600;
             border-radius: 8px;
-            box-shadow: none;
+            box-shadow: none; /* Remove shadow for header buttons */
         }
         .header-buttons .btn-portal {
             background-color: transparent;
@@ -122,7 +122,7 @@
             background-color: var(--bg-neutral);
             border-color: var(--primary-color);
             color: var(--primary-color);
-            transform: none;
+            transform: none; /* No translateY for header buttons */
             box-shadow: none;
         }
         .header-buttons .btn-inscricao {
@@ -132,19 +132,18 @@
         }
         .header-buttons .btn-inscricao:hover {
             background-color: var(--primary-light);
-            transform: none;
+            transform: none; /* No translateY for header buttons */
             box-shadow: none;
         }
 
-
         .hamburger-menu {
-            display: none; /* Controlado por JS/media query */
+            display: none; /* Escondido por padrão em desktop */
             flex-direction: column;
             cursor: pointer;
             padding: 8px;
             border-radius: var(--border-radius);
             transition: background-color var(--transition-speed);
-            margin-left: 15px;
+            margin-left: 15px; /* Espaço entre botões e hamburger */
         }
 
         .hamburger-menu:hover {
@@ -160,20 +159,19 @@
         }
 
         nav {
-            /* Default desktop styles */
-            display: flex; 
-            margin-left: 30px; 
-            /* Mobile transition properties */
+            display: flex; /* Visível por padrão em desktop */
+            margin-left: 30px; /* Espaço entre logo e nav */
+            
+            /* Adicionado para transição suave em mobile */
             opacity: 0;
             transform: translateY(-20px);
             transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-            pointer-events: none; /* Disable interaction when hidden */
         }
 
         nav.active {
             opacity: 1;
             transform: translateY(0);
-            pointer-events: all; /* Enable interaction when active */
+            display: flex !important; /* IMPORTANTE: Força a exibição em mobile */
         }
 
         nav ul {
@@ -212,7 +210,7 @@
             color: var(--primary-color);
         }
 
-        /* Seções - Base hidden and revealed by JS */
+        /* Seções */
         section {
             padding: 80px 0;
             background-color: var(--bg-light);
@@ -220,16 +218,16 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            display: none; /* Hidden by default, JS/visible class will manage */
+            display: none; /* Escondido por padrão, JavaScript gerencia a exibição */
         }
 
-        section.visible { /* Class to make section visible with transition */
+        section.visible { /* Classe para seção ativa/visível */
             opacity: 1;
             transform: translateY(0);
-            display: block; 
+            display: block; /* Visível quando a classe .visible é aplicada */
         }
         
-        .hero { 
+        .hero { /* Esta é a antiga seção 'home', agora intro/banner */
             background: linear-gradient(rgba(97, 41, 153, 0.8), rgba(97, 41, 153, 0.6)), url('https://source.unsplash.com/random/1600x900/?education,student,learning,university') no-repeat center center/cover;
             color: var(--light-text-color);
             text-align: center;
@@ -274,7 +272,7 @@
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border: none;
-            outline: none;
+            outline: none; /* Remove outline on focus */
         }
 
         .lottie-button-wrapper:hover {
@@ -325,7 +323,7 @@
             cursor: pointer;
             font-size: 1em;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            outline: none;
+            outline: none; /* Remove outline on focus */
         }
 
         .btn:hover {
@@ -338,7 +336,7 @@
             background-color: var(--primary-color);
         }
         .btn-primary-static:hover {
-            background-color: var(--primary-light);
+            background-color: var(--primary-light); /* Lighter on hover */
         }
         .btn-secondary-static {
             background-color: var(--secondary-color);
@@ -352,7 +350,6 @@
         .btn-green-static:hover {
             background-color: #218838;
         }
-
 
         h2 {
             font-size: 3em;
@@ -484,22 +481,21 @@
             border-left-color: var(--secondary-color);
         }
         .advantage-item::before { /* Pseudo-elemento para o "ícone" sem emoji */
-            content: '•'; /* Um simples bullet */
+            content: '•'; /* Um simples bullet, não um emoji */
             position: absolute;
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.5em; 
-            color: var(--secondary-color); 
+            font-size: 1.5em; /* Tamanho ajustado */
+            color: var(--secondary-color); /* Cor de destaque */
             font-weight: bold;
-            line-height: 1; 
+            line-height: 1; /* Alinha o bullet */
         }
         .advantage-item p {
             font-size: 1.1em;
             margin: 0;
             flex: 1;
         }
-
 
         /* Cards de Serviços (Section "Serviços") */
         .services-grid {
@@ -704,7 +700,6 @@
         .action-buttons .btn-edit { background-color: #17a2b8; color: white; }
         .action-buttons .btn-edit:hover { background-color: #138496; }
 
-
         .status-badge {
             display: inline-block;
             padding: 6px 12px;
@@ -717,7 +712,6 @@
         .status-active { background-color: #d4edda; color: #155724; }
         .status-blocked { background-color: #fff3cd; color: #856404; }
         .status-pending { background-color: #d1ecf1; color: #0c5460; }
-
 
         /* User Dashboard - Course Cards */
         .course-cards-grid {
@@ -862,7 +856,6 @@
             vertical-align: middle;
         }
 
-
         /* Keyframe Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -876,34 +869,27 @@
         /* Responsividade */
         @media (max-width: 992px) {
             .header-buttons {
-                display: none; /* Esconde os botões do header em mobile */
+                display: none; /* Hide buttons on medium screens, they will be in the nav for mobile */
             }
             header .container {
-                justify-content: space-between; /* Ajusta o espaçamento */
+                justify-content: space-between;
             }
             nav {
-                display: none; /* Mobile: nav hidden por padrão */
+                display: none; /* Escondido por padrão, só aparece com .active */
                 position: absolute;
-                top: 70px; 
+                top: 70px; /* Altura do header */
                 left: 0;
                 width: 100%;
                 background-color: var(--light-text-color);
                 box-shadow: var(--box-shadow);
                 padding: 10px 0;
                 border-top: 1px solid var(--border-color);
-                flex-direction: column; 
-                
-                /* Propriedades para transição do menu mobile */
-                opacity: 0;
-                transform: translateY(-20px);
-                transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-                pointer-events: none; /* Desabilita interações quando o menu está fechado */
+                flex-direction: column; /* Stack items vertically */
             }
             nav.active {
-                display: flex !important; /* IMPORTANTE: Força a exibição do menu mobile quando ativo */
+                display: flex !important; /* IMPORTANTE: Força a exibição em mobile */
                 opacity: 1;
                 transform: translateY(0);
-                pointer-events: all; /* Habilita interações quando o menu está aberto */
             }
             nav ul {
                 flex-direction: column;
@@ -944,7 +930,6 @@
                 background-color: var(--primary-light);
             }
 
-
             nav ul li {
                 text-align: center;
                 border-bottom: 1px solid var(--border-color);
@@ -969,8 +954,8 @@
                 transform: translateX(-50%);
             }
             .hamburger-menu {
-                display: flex; /* Mostra o menu hamburger em mobile */
-                margin-left: 0; 
+                display: flex; /* Show hamburger menu */
+                margin-left: 0; /* No extra margin */
             }
 
             .content-box {
@@ -1195,11 +1180,11 @@
                 <div class="content-box">
                     <div class="text-content">
                         <h3>Sua Escola - EAD: Uma Plataforma Virtual de Sucesso</h3>
-                        <p>Temos a solução! Oferecemos scripts de sites prontos para download, consultoria especializada e serviços de marketing digital para impulsionar sua presença online. Nossa missão é transformar seu negócio, seja você um empreendedor, uma Escola EAD ou uma marca personal.</p>
+                        <p>Temos a solução! Oferecemos scripts de sites prontos para download, consultoria especializada e serviços de marketing digital para impulsionar sua presença online. Nossa missão é transformar seu negócio, seja você um empreendedor, uma Escola EAD ou uma marca pessoal.</p>
                         <p>Seja para um site pessoal, e-commerce, gerador de imagens ou plataforma de streaming, nós te ajudamos a alcançar o próximo nível com inovação e eficiência.</p>
                     </div>
                     <div class="image-content">
-                        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Estudante%20EAD.png">
+                        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Banner%20Sua%20Escola.png" alt="Pessoas estudando online">
                     </div>
                 </div>
                 <div class="content-box reversed">
@@ -1209,7 +1194,7 @@
                         <p>Com toda essa flexibilidade e avanços tecnológicos, você pode estudar em uma instituição de ensino com a qualidade da Sua Escola - EAD, realizar diversas atividades e aprender como se estivesse na sala de aula. Facilitando assim o aprendizado e conciliando com as atividades do dia a dia.</p>
                     </div>
                     <div class="image-content">
-                        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Banner%20Sua%20Escola.png">
+                        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Estudante%20EAD.png" alt="Estudante com fones de ouvido e laptop">
                     </div>
                 </div>
             </div>
@@ -1285,7 +1270,7 @@
         <section id="precos" class="hidden">
             <div class="container">
                 <h2>Preços</h2>
-                <p style="text-align: center; font-size: 1.3em; max-width: 900px; margin: 0 auto 30px; line-height: 1.5; color: #555;">
+                <p style="text-align: center; font-size: 1.3em; max-width: 900px; margin: 0 auto 30px; line-height: 1.5;">
                     Acreditamos em soluções acessíveis e de alta qualidade.
                     Entre em contato conosco e descubra como podemos te ajudar de forma mais econômica do mercado!
                 </p>
@@ -1354,7 +1339,6 @@
                             <span id="import-status" style="margin-left: 10px; color: #6c757d;"></span>
                         </div>
                     </div>
-
 
                     <h3>Cadastrar Novo Curso</h3>
                     <form id="add-course-form">
@@ -1508,6 +1492,7 @@
                 courses = coursesData ? JSON.parse(coursesData) : [];
             } catch (e) {
                 console.error("Erro ao carregar dados do localStorage:", e);
+                // Removido o alert aqui para não incomodar o usuário na carga inicial
                 students = [];
                 courses = [];
             }
@@ -1531,38 +1516,36 @@
 
         // Exibe uma seção e esconde as outras com transição
         function showSection(sectionId) {
-            console.log(`Attempting to show section: ${sectionId}`); // Debugging
-            const sections = document.querySelectorAll('main section'); // Selects only sections within <main>
+            console.log(`Tentando exibir seção: ${sectionId}`); // Debugging
+            const sections = document.querySelectorAll('main section'); // Seleciona apenas seções dentro de <main>
             sections.forEach(sec => {
                 if (sec.id === sectionId) {
-                    // Make target section visible
                     if (!sec.classList.contains('visible')) {
-                        sec.style.display = 'block'; // Set display to block immediately
-                        setTimeout(() => { // Small delay to allow browser to register display: block
+                        sec.style.display = 'block'; // Garante que o elemento esteja visível antes da transição de entrada
+                        setTimeout(() => {
                             sec.classList.remove('hidden');
                             sec.classList.add('visible');
-                        }, 50); 
+                        }, 50); // Pequeno delay para garantir que o display: block seja processado
                     }
                 } else {
-                    // Hide other sections
                     if (sec.classList.contains('visible')) {
                         sec.classList.remove('visible');
                         sec.classList.add('hidden');
                         sec.addEventListener('transitionend', function handler() {
                             if (sec.classList.contains('hidden')) {
-                                sec.style.display = 'none'; // Hide after transition
+                                sec.style.display = 'none';
                             }
                             sec.removeEventListener('transitionend', handler);
                         }, { once: true });
                     } else {
-                        sec.style.display = 'none'; // Instantly hide if already hidden and not target
+                        sec.style.display = 'none'; // Esconde imediatamente se já estava hidden
                     }
                 }
             });
 
             const mainNav = document.getElementById('main-nav');
             if (mainNav.classList.contains('active')) {
-                mainNav.classList.remove('active'); // Close mobile nav when a section is clicked
+                mainNav.classList.remove('active');
             }
 
             if (sectionId === 'admin-dashboard') {
@@ -1596,6 +1579,7 @@
             const importFileInput = document.getElementById('import-file-input');
 
             hamburgerMenu.addEventListener('click', () => {
+                console.log("Hamburger clicked!"); // Debugging
                 mainNav.classList.toggle('active');
             });
 
@@ -1606,38 +1590,31 @@
                 form.addEventListener('submit', (e) => e.preventDefault());
             });
 
-            // Handle clicks on nav links/buttons to close mobile menu
             document.querySelectorAll('#main-nav a, #main-nav .btn').forEach(element => {
                 element.addEventListener('click', () => {
-                    // Only close if mobile menu is active AND screen is mobile size
-                    if (mainNav.classList.contains('active') && window.innerWidth <= 992) {
-                        mainNav.classList.remove('active');
+                    if (window.innerWidth <= 992) {
+                        document.getElementById('main-nav').classList.remove('active');
                     }
                 });
             });
 
-            // Function to set visibility based on screen size
-            function setNavAndHeaderButtonsVisibility() {
+            function setNavVisibility() {
                 if (window.innerWidth > 992) {
-                    // Desktop view
-                    mainNav.style.display = 'flex'; // Nav always visible for desktop
+                    mainNav.style.display = 'flex'; // Desktop: nav sempre visível como flex
                     hamburgerMenu.style.display = 'none';
                     headerButtons.style.display = 'flex';
-                    mainNav.classList.remove('active'); // Ensure mobile menu state is off
-                    // Hide mobile-only buttons within the nav for desktop
+                    mainNav.classList.remove('active'); // Garante que o menu mobile esteja desativado no desktop
                     document.querySelectorAll('nav ul li.mobile-only').forEach(li => li.style.display = 'none');
                 } else {
-                    // Mobile view
-                    mainNav.style.display = 'none'; // Nav hidden by default, toggled by .active
+                    mainNav.style.display = 'none'; // Mobile: nav hidden por padrão, controlado por .active
                     hamburgerMenu.style.display = 'flex';
-                    headerButtons.style.display = 'none'; // Hide desktop buttons
-                    // Show mobile-only buttons within the nav for mobile
+                    headerButtons.style.display = 'none';
                     document.querySelectorAll('nav ul li.mobile-only').forEach(li => li.style.display = 'block');
                 }
             }
 
-            setNavAndHeaderButtonsVisibility(); // Run once on load
-            window.addEventListener('resize', setNavAndHeaderButtonsVisibility); // Run on window resize
+            setNavVisibility(); // Executa na carga inicial
+            window.addEventListener('resize', setNavVisibility); // Executa no redimensionamento
 
             if (importFileInput) {
                 importFileInput.addEventListener('change', importData);
@@ -1709,7 +1686,6 @@
                 `;
             });
 
-            // Re-assign onclick handler to avoid duplicate listeners
             tableBody.onclick = (event) => {
                 const target = event.target;
                 if (target.tagName === 'BUTTON') {
@@ -1798,7 +1774,6 @@
                 `;
             });
 
-            // Re-assign onclick handler to avoid duplicate listeners
             tableBody.onclick = (event) => {
                 const target = event.target;
                 if (target.tagName === 'BUTTON') {
@@ -1942,7 +1917,6 @@
             };
             reader.readAsText(file);
         }
-
 
         // --- Lógica de Login do Usuário (Aluno) ---
         const userLoginForm = document.getElementById('user-login-form');
