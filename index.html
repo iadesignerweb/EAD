@@ -11,7 +11,7 @@
     <meta name="author" content="Sua Escola - EAD">
     <meta property="og:title" content="Sua Escola - EAD - Soluções Digitais Completas">
     <meta property="og:description" content="Sua parceira para sites, marketing digital e desenvolvimento de apps. Construa seu sucesso online!">
-    <meta property="og:url" content="https://instagram.com/pliniofabricio_"> <!-- SUBSTITUA PELA SUA URL REAL DO SITE -->
+    <meta property="og:url" content="https://suaescola.com.br"> <!-- SUBSTITUA PELA SUA URL REAL DO SITE -->
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sua Escola - EAD - Soluções Digitais Completas">
@@ -136,6 +136,7 @@
             box-shadow: none;
         }
 
+
         .hamburger-menu {
             display: none; /* Escondido por padrão em desktop */
             flex-direction: column;
@@ -161,17 +162,6 @@
         nav {
             display: flex; /* Visível por padrão em desktop */
             margin-left: 30px; /* Espaço entre logo e nav */
-            
-            /* Adicionado para transição suave em mobile */
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-        }
-
-        nav.active {
-            opacity: 1;
-            transform: translateY(0);
-            display: flex !important; /* IMPORTANTE: Força a exibição em mobile */
         }
 
         nav ul {
@@ -224,7 +214,7 @@
         section.visible { /* Classe para seção ativa/visível */
             opacity: 1;
             transform: translateY(0);
-            display: block; /* Visível quando a classe .visible é aplicada */
+            display: block;
         }
         
         .hero { /* Esta é a antiga seção 'home', agora intro/banner */
@@ -350,6 +340,7 @@
         .btn-green-static:hover {
             background-color: #218838;
         }
+
 
         h2 {
             font-size: 3em;
@@ -496,6 +487,7 @@
             margin: 0;
             flex: 1;
         }
+
 
         /* Cards de Serviços (Section "Serviços") */
         .services-grid {
@@ -700,6 +692,7 @@
         .action-buttons .btn-edit { background-color: #17a2b8; color: white; }
         .action-buttons .btn-edit:hover { background-color: #138496; }
 
+
         .status-badge {
             display: inline-block;
             padding: 6px 12px;
@@ -712,6 +705,7 @@
         .status-active { background-color: #d4edda; color: #155724; }
         .status-blocked { background-color: #fff3cd; color: #856404; }
         .status-pending { background-color: #d1ecf1; color: #0c5460; }
+
 
         /* User Dashboard - Course Cards */
         .course-cards-grid {
@@ -856,6 +850,7 @@
             vertical-align: middle;
         }
 
+
         /* Keyframe Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -875,9 +870,9 @@
                 justify-content: space-between;
             }
             nav {
-                display: none; /* Escondido por padrão, só aparece com .active */
+                display: none; /* Hide main nav by default, use hamburger */
                 position: absolute;
-                top: 70px; /* Altura do header */
+                top: 70px; /* Header height */
                 left: 0;
                 width: 100%;
                 background-color: var(--light-text-color);
@@ -887,9 +882,7 @@
                 flex-direction: column; /* Stack items vertically */
             }
             nav.active {
-                display: flex !important; /* IMPORTANTE: Força a exibição em mobile */
-                opacity: 1;
-                transform: translateY(0);
+                display: flex; /* Show nav when active */
             }
             nav ul {
                 flex-direction: column;
@@ -929,6 +922,7 @@
             nav ul li.mobile-only .btn-inscricao:hover {
                 background-color: var(--primary-light);
             }
+
 
             nav ul li {
                 text-align: center;
@@ -1184,7 +1178,7 @@
                         <p>Seja para um site pessoal, e-commerce, gerador de imagens ou plataforma de streaming, nós te ajudamos a alcançar o próximo nível com inovação e eficiência.</p>
                     </div>
                     <div class="image-content">
-                        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Banner%20Sua%20Escola.png" alt="Pessoas estudando online">
+                        <img src="https://source.unsplash.com/random/500x350/?online-education,team" alt="Pessoas estudando online">
                     </div>
                 </div>
                 <div class="content-box reversed">
@@ -1194,7 +1188,7 @@
                         <p>Com toda essa flexibilidade e avanços tecnológicos, você pode estudar em uma instituição de ensino com a qualidade da Sua Escola - EAD, realizar diversas atividades e aprender como se estivesse na sala de aula. Facilitando assim o aprendizado e conciliando com as atividades do dia a dia.</p>
                     </div>
                     <div class="image-content">
-                        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Estudante%20EAD.png" alt="Estudante com fones de ouvido e laptop">
+                        <img src="https://source.unsplash.com/random/500x350/?student-headphones,laptop" alt="Estudante com fones de ouvido e laptop">
                     </div>
                 </div>
             </div>
@@ -1330,15 +1324,6 @@
                 <h2>Dashboard de Administrador</h2>
                 <div id="admin-dashboard-content">
                     <p style="font-size: 1.1em; margin-bottom: 30px;">Bem-vindo, Administrador! Gerencie alunos e cursos abaixo.</p>
-
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
-                        <button class="btn btn-secondary-static" onclick="exportData()">Exportar Dados (Backup)</button>
-                        <div>
-                            <input type="file" id="import-file-input" accept=".json" style="display: none;">
-                            <button class="btn btn-primary-static" onclick="document.getElementById('import-file-input').click()">Importar Dados (Restaurar)</button>
-                            <span id="import-status" style="margin-left: 10px; color: #6c757d;"></span>
-                        </div>
-                    </div>
 
                     <h3>Cadastrar Novo Curso</h3>
                     <form id="add-course-form">
@@ -1492,7 +1477,7 @@
                 courses = coursesData ? JSON.parse(coursesData) : [];
             } catch (e) {
                 console.error("Erro ao carregar dados do localStorage:", e);
-                // Removido o alert aqui para não incomodar o usuário na carga inicial
+                // alert("Erro ao carregar dados. Seu navegador pode estar com o armazenamento cheio ou desativado."); // Removido para não incomodar o usuário na carga inicial
                 students = [];
                 courses = [];
             }
@@ -1504,7 +1489,7 @@
                 localStorage.setItem(LOCAL_STORAGE_COURSES_KEY, JSON.stringify(courses));
             } catch (e) {
                 console.error("Erro ao salvar dados no localStorage:", e);
-                alert("Erro ao salvar dados. Seu navegador pode estar com o armazenamento cheio ou desativado. Por favor, verifique as configurações do navegador ou exporte seus dados para um backup manual.");
+                alert("Erro ao salvar dados. Seu navegador pode estar com o armazenamento cheio ou desativado.");
             }
         }
 
@@ -1516,32 +1501,32 @@
 
         // Exibe uma seção e esconde as outras com transição
         function showSection(sectionId) {
-            console.log(`Tentando exibir seção: ${sectionId}`); // Debugging
-            const sections = document.querySelectorAll('main section'); // Seleciona apenas seções dentro de <main>
+            const sections = document.querySelectorAll('section');
             sections.forEach(sec => {
-                if (sec.id === sectionId) {
-                    if (!sec.classList.contains('visible')) {
-                        sec.style.display = 'block'; // Garante que o elemento esteja visível antes da transição de entrada
-                        setTimeout(() => {
-                            sec.classList.remove('hidden');
-                            sec.classList.add('visible');
-                        }, 50); // Pequeno delay para garantir que o display: block seja processado
-                    }
+                if (sec.classList.contains('visible')) {
+                    sec.classList.remove('visible');
+                    sec.classList.add('hidden');
+                    // Aguarda a transição de saída para então definir display: none
+                    sec.addEventListener('transitionend', function handler() {
+                        if (sec.classList.contains('hidden')) {
+                            sec.style.display = 'none';
+                        }
+                        sec.removeEventListener('transitionend', handler);
+                    }, { once: true }); // Garante que o listener seja removido após uma execução
                 } else {
-                    if (sec.classList.contains('visible')) {
-                        sec.classList.remove('visible');
-                        sec.classList.add('hidden');
-                        sec.addEventListener('transitionend', function handler() {
-                            if (sec.classList.contains('hidden')) {
-                                sec.style.display = 'none';
-                            }
-                            sec.removeEventListener('transitionend', handler);
-                        }, { once: true });
-                    } else {
-                        sec.style.display = 'none'; // Esconde imediatamente se já estava hidden
-                    }
+                    sec.style.display = 'none'; // Esconde imediatamente se já estava hidden
                 }
             });
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block'; // Torna o elemento visível para que a transição de entrada aconteça
+                // Pequeno delay para garantir que a propriedade 'display' foi aplicada antes de iniciar a transição
+                setTimeout(() => {
+                    targetSection.classList.remove('hidden');
+                    targetSection.classList.add('visible'); // Adiciona a classe visible para iniciar a transição
+                }, 50); 
+            }
 
             const mainNav = document.getElementById('main-nav');
             if (mainNav.classList.contains('active')) {
@@ -1576,10 +1561,8 @@
             const hamburgerMenu = document.getElementById('hamburger-menu');
             const mainNav = document.getElementById('main-nav');
             const headerButtons = document.querySelector('.header-buttons');
-            const importFileInput = document.getElementById('import-file-input');
 
             hamburgerMenu.addEventListener('click', () => {
-                console.log("Hamburger clicked!"); // Debugging
                 mainNav.classList.toggle('active');
             });
 
@@ -1600,25 +1583,21 @@
 
             function setNavVisibility() {
                 if (window.innerWidth > 992) {
-                    mainNav.style.display = 'flex'; // Desktop: nav sempre visível como flex
+                    mainNav.style.display = 'flex';
                     hamburgerMenu.style.display = 'none';
                     headerButtons.style.display = 'flex';
-                    mainNav.classList.remove('active'); // Garante que o menu mobile esteja desativado no desktop
+                    mainNav.classList.remove('active');
                     document.querySelectorAll('nav ul li.mobile-only').forEach(li => li.style.display = 'none');
                 } else {
-                    mainNav.style.display = 'none'; // Mobile: nav hidden por padrão, controlado por .active
+                    mainNav.style.display = 'none';
                     hamburgerMenu.style.display = 'flex';
                     headerButtons.style.display = 'none';
                     document.querySelectorAll('nav ul li.mobile-only').forEach(li => li.style.display = 'block');
                 }
             }
 
-            setNavVisibility(); // Executa na carga inicial
-            window.addEventListener('resize', setNavVisibility); // Executa no redimensionamento
-
-            if (importFileInput) {
-                importFileInput.addEventListener('change', importData);
-            }
+            setNavVisibility();
+            window.addEventListener('resize', setNavVisibility);
         });
 
         // --- Lógica da Seção Pública (Inscreva-se) ---
@@ -1845,77 +1824,6 @@
                 renderCourseTable();
                 alert('Curso excluído com sucesso.');
             }
-        }
-
-        // --- Lógica de Backup/Restauração de Dados ---
-        function exportData() {
-            const dataToExport = {
-                students: students,
-                courses: courses
-            };
-            const jsonString = JSON.stringify(dataToExport, null, 2); // Pretty print JSON
-
-            const blob = new Blob([jsonString], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-
-            const a = document.createElement('a');
-            a.href = url;
-            const date = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-            a.download = `ead_backup_${date}.json`;
-            document.body.appendChild(a); // Necessário para Firefox
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            alert('Dados exportados com sucesso!');
-        }
-
-        function importData(event) {
-            const file = event.target.files[0];
-            const importStatus = document.getElementById('import-status');
-            importStatus.textContent = ''; // Limpa status anterior
-
-            if (!file) {
-                importStatus.textContent = 'Nenhum arquivo selecionado.';
-                return;
-            }
-
-            if (file.type !== 'application/json') {
-                importStatus.textContent = 'Por favor, selecione um arquivo JSON válido.';
-                alert('Formato de arquivo inválido. Por favor, selecione um arquivo JSON.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                try {
-                    const importedData = JSON.parse(e.target.result);
-
-                    // Validação básica da estrutura
-                    if (!Array.isArray(importedData.students) || !Array.isArray(importedData.courses)) {
-                        throw new Error("Estrutura do arquivo JSON inválida. Deve conter 'students' e 'courses'.");
-                    }
-
-                    if (confirm('Importar estes dados substituirá TODOS os dados atuais de alunos e cursos. Deseja continuar?')) {
-                        students = importedData.students;
-                        courses = importedData.courses;
-                        saveData(); // Salva os dados importados no localStorage
-                        renderStudentTable(); // Atualiza a UI
-                        renderCourseTable(); // Atualiza a UI
-                        showSection('admin-dashboard'); // Volta para o dashboard
-                        importStatus.textContent = 'Dados importados com sucesso!';
-                        alert('Dados importados com sucesso!');
-                    } else {
-                         importStatus.textContent = 'Importação cancelada.';
-                    }
-                } catch (error) {
-                    console.error("Erro ao importar dados:", error);
-                    importStatus.textContent = `Erro: ${error.message}`;
-                    alert(`Erro ao importar dados: ${error.message}`);
-                } finally {
-                    event.target.value = ''; // Limpa o input de arquivo para permitir re-seleção do mesmo arquivo
-                }
-            };
-            reader.readAsText(file);
         }
 
         // --- Lógica de Login do Usuário (Aluno) ---
